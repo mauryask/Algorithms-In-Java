@@ -1,27 +1,54 @@
 //this algorithm is used to find GCD of two numbers
 //https://www.techiedelight.com/euclids-algorithm-to-find-gcd-of-two-numbers/
 
-package com.pnstech;
-
 import java.util.Scanner;
 
-public class EuclidsAlgorithm {
+public class EuclidsAlgorithm 
+{
 
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 		
 		Scanner sc = new Scanner(System.in);
 		int a = sc.nextInt();
 		int b = sc.nextInt();
 		
 		//int n = euclidGCD(a, b);
-		 int n = bestEuclid(a, b);
+		 int n = naiveApproach(a, b);
 		System.out.print(n);
          sc.close();
 	}
 
+	/**
+	* This is the naive approach
+	* worst approach
+	* Time Complexity : O(min(a, b))
+	*/
 	
-//this is not much better since it takes more time (consider the following)	
-	//replacing the larger of the two by its difference
+	static int naiveApproach(int a, int b)
+	{
+		int m = (int) Math.min(a,b);
+		for(int i=m; i>0; i--)
+		{
+			if(a % i == 0 && b % i ==0)
+			{
+			   return i;
+			}		
+		}
+		
+		return 1;
+	}
+	
+	
+	/**
+	* This is better than above approach
+	* but not the best 
+	* as if one number is very much larger than other one
+	* time compleixty increases (because alot of subtractions needed)
+	********
+	* Replace the larger number by the difference between the two
+    */
+	
 	static int euclidGCD(int a,int b)
 	{
 		
@@ -46,9 +73,17 @@ public class EuclidsAlgorithm {
 	}
 	
 	
-//this is the best algorithm not going to take more than 5 steps	
-	//replacing the larger of the two by the remainder
-	static int bestEuclid(int a, int b)
+    /**
+	* This is better than above approach
+	* and best if numbers are not coprime
+	* not going to take more than 5 times the 
+	* number of digits in the smaller number	
+	* Time compleixty : O(log(max(a,b)))
+	********
+	* Replace the larger numbe by the remainder 
+    */
+	
+	static int euclidsAlgo(int a, int b)
 	{
 		//iterative  version
 		/*int q, r;
@@ -62,12 +97,20 @@ public class EuclidsAlgorithm {
 		return a;*/
 		//recursive version
 		
-		if(a%b==0)
-			return b;
+		if(b==0)
+			return a;
 		else
-			return bestEuclid(b, a%b);
-		
-		
+			return euclidsAlgo(b, a%b);
 	}
+	
+    /**
+	* This approach should be used if 
+	* two numbers are coprime (GCD = 1)
+    */
+	
+  static void extendedEuclidsAlgo(int a, int b)
+  {
+       //will be completed soon	  
+  }
 
 }

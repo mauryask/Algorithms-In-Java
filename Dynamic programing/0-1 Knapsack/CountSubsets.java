@@ -2,6 +2,13 @@
 // instead of return true and false we just 
 // have to return the number of subsets
 
+/**
+* The target sum problem could be solved by
+* like the asme approach
+* just count number of subset pairs 
+* that can produce target_sum (on assigninf (+/-) signs to each number) 
+*/
+
 import static java.lang.System.*;
 
 public class CountSubsets
