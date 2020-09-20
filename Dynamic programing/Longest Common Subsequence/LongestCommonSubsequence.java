@@ -1,5 +1,6 @@
 // all the three approaches to find
 // length of the longest common subsequences
+
 import static java.lang.System.*;
 
 public class LongestCommonSubsequence
@@ -21,7 +22,7 @@ public class LongestCommonSubsequence
 				dp[i][j] = -1;
 		}
 		*/
-		out.println(topDown(x,y,m,n,dp));
+		out.println("The length of the LCS: "+topDown(x,y,m,n,dp));
   	}
 	
 	static int recursive(String x, String y,int m, int n)
@@ -75,6 +76,33 @@ public class LongestCommonSubsequence
 			  }
 		  }
 	  }
+	  
+	  printSubsequence(dp,m,n,x,y); //print LCS
+	  
 	  return dp[m][n];
+	}
+	
+	//printing longest common subsequence
+	
+	static void printSubsequence(int dp[][],int n1, int n2, String x, String y)
+	{
+		StringBuilder sb = new StringBuilder();
+		while(n1>0 && n2>0)
+		{
+			if(x.charAt(n1-1) == y.charAt(n2-1))
+			{
+				sb.append(x.charAt(n1-1));
+				n1--; n2--;
+			}
+			else
+			{
+				if(dp[n1-1][n2] > dp[n1][n2-1])
+					n1--;
+				else
+					n2--;
+			}
+		}
+		
+		out.println(sb.reverse());
 	}
 }

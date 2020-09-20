@@ -17,14 +17,14 @@ public class NumberOfSubsetswithGivenDiff
 		sum += set[i];
 	
 	   // find number of substes that can produce this sum
-	    float s1 = (sum + (float) diff) / 2;
+	    int s1 = (sum + diff) / 2;
 	
 	    out.println(solve(set, n, s1));
 	}
 	
-	static int solve(int set[], int n, float s)
+	static int solve(int set[], int n, int s)
 	{
-		int dp[][] = new int[n+1][(int)s+1];
+		int dp[][] = new int[n+1][s+1];
 		for(int i=0; i<n+1; i++)
 			dp[i][0] = 1;
 		
@@ -40,6 +40,6 @@ public class NumberOfSubsetswithGivenDiff
 			}
 		}
 		
-		return dp[n][(int)s];
+		return dp[n][s];
 	}
 }
