@@ -9,12 +9,12 @@ public class AllPossiblePaths
 	int N;
 	AllPossiblePaths(int N){this.N = N;}
 	
-   void totalPath(int maze[][], int src, int dest)
+   void totalPath(int maze[][], int x, int y)
    {
 	   int count = 0;
 	   boolean visited[][] = new boolean[N][N];
 	   int sol[][] = new int[N][N];
-	   count = pathUtil(maze, src, dest, count, visited, sol);
+	   count = pathUtil(maze, x, y, count, visited, sol);
 	   out.println(count);
    }
 
@@ -23,7 +23,7 @@ public class AllPossiblePaths
 	   if(x == N-1 && y == N-1 && maze[x][y] == 1) //destination achieved
 	   {
 		   count++;
-		  sol[x][y] = 1;
+		   sol[x][y] = 1;
 		   printPath(sol);
 		   return count;
 	   }

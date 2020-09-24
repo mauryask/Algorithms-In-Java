@@ -16,8 +16,7 @@ public class RatMaze
 		boolean status = false;
 		status = mazePathUtil(maze, x, y, status, sol);
 		if(!status)
-			out.println("No path found");	
-			
+			out.println("No path found");			
 	}
 	
 	boolean mazePathUtil(int maze[][], int x, int y, boolean status, int sol[][])
