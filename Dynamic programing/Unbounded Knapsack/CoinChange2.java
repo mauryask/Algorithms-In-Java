@@ -1,4 +1,4 @@
-// calculating minimum number of cpoins required to 
+// calculating minimum number of coins required to 
 // produce the required sum
 // each coin is infinite in number
 // you can take as may coins as you can
@@ -47,7 +47,7 @@ public class CoinChange2
 			for(int j=1; j<sum+1 ; j++)
 			{
 				if(coin[i-1] <= j)
-					dp[i][j] = (int)Math.min(1+dp[i][j-coin[i-1]], dp[i-1][j]);
+					dp[i][j] = Math.min(1+dp[i][j-coin[i-1]], dp[i-1][j]);
 				else if(coin[i-1] > j)
 					dp[i][j] = dp[i-1][j];
 			}

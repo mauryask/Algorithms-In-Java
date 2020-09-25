@@ -3,7 +3,9 @@
 //here in case of insertion sort time complexity is : O(n^2)
 //in case of merge sort time complexity is : O(n * log n)
 
-public class Test
+import java.util.*;
+
+public class GreedyKnapsack
 {
 	public static void main(String [] args)
 	{
@@ -14,26 +16,50 @@ public class Test
 		greedyKnapsack(p ,w, m);
 	}
 	
+	static class Heap implements Comparable<Heap>
+	{
+		int p;
+		int w;
+		float pw;
+		
+		@Override
+		public int compareTo(Heap o)
+		{
+			float diff = o.pw - this.pw;
+			if(diff < 0)
+				return -1;
+			else
+				return 1;
+		}
+	}
+	
 	static void greedyKnapsack(int p[], int w[], int m)
 	{
-		float pw []= new float[p.length];
-		
+		Heap heap[] = new Heap[p.length];
+			
 	    for(int i=0; i<p.length; i++)
 	    {
-	    	pw[i] = (float) p[i] / (float)w[i];
+	    	heap[i] = new Heap();
+			heap[i].p = p[i];
+			heap[i].w = w[i];
+			heap[i].pw = (float)p[i]/(float)w[i];
 	    }
 	    
-	    //sorting the objects in non-increasing order of the p/w ratio	    
-	    sortObjects(pw, p,w);
-	    
+		Arrays.sort(heap);
+		
+		
+		for(Heap x : heap)
+			System.out.println(x.p+", "+x.w+", "+x.pw);
+		
 	    float profit = 0.0f; //total profit
 	    int i; 
-	    for(i=0; i<p.length; i++)
+	    
+		for(i=0; i<p.length; i++)
 	    {
-	    	if(m > 0 && w[i] < m)
+	    	if(m > 0 && heap[i].w <= m)
 	    	{
-	    		m = m - w[i];
-	    		profit += p[i];
+	    		m = m - heap[i].w;
+	    		profit += heap[i].p;
 	    	}
 	    	else
 	    		break;
@@ -41,35 +67,9 @@ public class Test
 	    
 	    if(m > 0)
 	    {
-	    	profit = profit + ((float)p[i] / w[i]) * m;
+	    	profit = profit + heap[i].pw * m;
 	    }
 	    
 	    System.out.println(profit);
-	}
-	
-	static void sortObjects(float pw[], int p[], int w[]) 
-	{
-		float temp;
-		int p_temp;
-		int w_temp;
-		int i, j;
-		
-		for(i=1 ;i <p.length; i++)
-		{
-			temp = pw[i];
-			p_temp = p[i];
-			w_temp  = w[i];
-			for(j=(i-1); j>=0 && temp > pw[j]; j--)
-			{
-				pw[j+1] = pw[j];
-				p[j+1]  = p[j];
-				w[j+1]  = w[j];
-			}
-			
-			pw[j+1] = temp;
-			p[j+1]  = p_temp;
-			w[j+1]  = w_temp;
-		}
-		
 	}
 }
