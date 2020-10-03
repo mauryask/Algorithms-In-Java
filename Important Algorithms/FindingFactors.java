@@ -22,7 +22,7 @@ public class FindingFactors
 	
 	static void solve(int num)
 	{
-		for(int i = 1; i< Math.sqrt(num) ; i++)
+		for(int i = 1; i<= Math.sqrt(num) ; i++)
 		{
 			if(num % i == 0)
 			{
