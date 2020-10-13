@@ -22,7 +22,7 @@ public class LongestCommonSubsequence
 				dp[i][j] = -1;
 		}
 		*/
-		out.println("The length of the LCS: "+topDown(x,y,m,n,dp));
+		out.println("The length of the LCS: "+bottomUp(x,y,m,n,dp));
   	}
 	
 	static int recursive(String x, String y,int m, int n)
@@ -54,7 +54,7 @@ public class LongestCommonSubsequence
 		}
 	}
 	
-	static int topDown(String x, String y, int m, int n, int dp[][])
+	static int bottomUp(String x, String y, int m, int n, int dp[][])
 	{
 	 
 /*	 for(int i=0; i<m+1; i++)

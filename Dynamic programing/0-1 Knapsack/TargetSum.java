@@ -21,8 +21,8 @@ public class TargetSum
 		out.println(solve(set, n, t_sum));
 	}
 	
-	static int solve(int set[], int n, int s)
-	{
+	static int solve(int set[], int n, int s) //bottom up approach
+	{ 
 		int dp[][] = new int [n+1][s+1];
 		
 		for(int i=0;i<n+1; i++)

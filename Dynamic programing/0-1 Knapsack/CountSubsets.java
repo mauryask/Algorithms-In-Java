@@ -21,7 +21,7 @@ public class CountSubsets
 		out.println(solve(set, n, sum));
 	}
 	
-	static int solve(int set[], int n, int sum)
+	static int solve(int set[], int n, int sum) //bottom up
 	{
 	   int dp[][] = new int[n+1][sum+1];
 	   

@@ -29,7 +29,7 @@ public class Knapsack
 		
 		out.println(recursive(wt, val, w, n));
 		out.println(memoization(wt, val, w, n));
-		out.println(topDown(wt, val, w, n));
+		out.println(bottomUp(wt, val, w, n));
 	}
 	
 	
@@ -52,7 +52,7 @@ public class Knapsack
 	}
 	
 	/**
-	* Memoization (Bottom Up) Approach
+	* Memoization (Top Down Approach)
 	* Good but not best
 	* Time complexity : o(n*w) >> exponenetial time complexity
 	* Space complexity : O(n*w) + size of recursion stack
@@ -74,13 +74,13 @@ public class Knapsack
 	}
 	
 	/**
-	* Memorization (Top down) Approach
+	* Memorization (Bottom Up) Approach
 	* The best approach
 	* Time complexity : o(n*w) >> exponenetial time complexity
 	* Space complexity : O(n*w) 
 	*/
 	
-	static int topDown(int wt[], int val[], int w, int n)
+	static int bottomUp(int wt[], int val[], int w, int n)
 	{
 		//initializzation
 		/*for(int i=0; i<n+1; i++)

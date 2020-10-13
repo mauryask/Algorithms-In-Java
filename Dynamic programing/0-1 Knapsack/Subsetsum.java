@@ -36,7 +36,7 @@ public class Subsetsum
 	}
 	
 	/**
-	* Top Down Approach (Dynamic Programming)
+	* Bottom Up Approach (Dynamic Programming)
 	* Best Approach
 	* Time Complexity : O(n * sum);
 	* Space Complexity : O(n * sum)
