@@ -32,6 +32,6 @@ public class MinimumNumberOfAdditionAndSubTractoin
 		}
 		
 		out.println("Addtions: "+(n-dp[m][n]));
-	    out.println("Deletion: "+(m-dp[m][n]));	
+	        out.println("Deletion: "+(m-dp[m][n]));	
 	}
 }
