@@ -44,13 +44,12 @@ public class DynamicFibo
 //tabular approach 
       static void fib(int N, int cache[])
 	  {
-		  //for N<2
-		    cache[0]=0;
-			cache[1]=1;
-		  //and initialize remaining elements to Zero
-		  for(int i=2; i<=N; i++)
+		  for(int i=0; i<=N; i++)
 		  {
-			  cache[i] = cache[i-1] + cache[i-2];
+			  if(i==0 || i==1)
+				  cache[i] = i;
+			  else
+			      cache[i] = cache[i-1] + cache[i-2];
 		  }
 	  }	
 
@@ -82,7 +81,7 @@ static int fib1(int N, int cache[])
 //here time complexity O(n)
 //but the space complexity O(1)
 //so it should be used in future
-
+// best appraoch
 static void fib2(int N)
 {
  int first = 0;

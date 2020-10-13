@@ -18,14 +18,12 @@ public class BottomUpMatrixChain
 	  //but here for convenience we have taken S[1..n, 1...n]
 	  int s[][] = new int[n][n]; 
 	 
-   	 for(int i=0; i<n; i++)
-	  {
-		m[i][i] = 0; //put 0 if 'i==j'		
-	  }
+   	// for(int i=0; i<n; i++)
+		//m[i][i] = 0; //put 0 if 'i==j'		
+	
 	  //cell that holds the result of multiplication of l matrices 
 	  for(int l=2; l<=n; l++) 
 	  {
-
 		  for(int i=0 ; i<(n-l+1) ; i++) 
 		  {
 		   int j = i+l-1;
