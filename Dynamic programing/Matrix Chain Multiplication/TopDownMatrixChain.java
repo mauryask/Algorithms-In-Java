@@ -33,7 +33,7 @@ public class TopDownMatrixChain
 	
 	static int lookUpChain(int m[][], int p[], int i, int j) // O(n^3)
 	{
-		if(m[i][j] < Integer.MAX_VALUE) //checks if value is already computed then just return it
+		if(m[i][j] != Integer.MAX_VALUE) //checks if value is already computed then just return it
 			return m[i][j];
 		if(i==j)
 			m[i][j] = 0;
