@@ -1,6 +1,6 @@
 // finding mimnimum nuber of insertion and deltion 
 // to convert string a to string b
-// see the video lectires for more
+// see the video lectures for more
 
 import static java.lang.System.*;
 

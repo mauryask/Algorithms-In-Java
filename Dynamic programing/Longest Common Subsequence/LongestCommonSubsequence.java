@@ -33,9 +33,7 @@ public class LongestCommonSubsequence
 		if(x.charAt(m-1) == y.charAt(n-1))
 			return 1+recursive(x, y, m-1, n-1);
 		else
-		{
 			return Math.max(recursive(x,y,m-1,n), recursive(x,y,m,n-1));
-		}
 	}
 	
 	static int memoization(String x, String y, int m, int n)

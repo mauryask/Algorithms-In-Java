@@ -15,9 +15,9 @@ public class CoinChange2
 {
 	public static void main(String [] args)
 	{
-		int coin[] = {2};
-		int sum = 3;
-		int n = 1;
+		int coin[] = {1,2,3};
+		int sum = 5;
+		int n = 3;
 		out.println(s(coin, sum, n));
 	}
 	
