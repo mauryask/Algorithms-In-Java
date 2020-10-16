@@ -1,5 +1,5 @@
 // this problem demonstrates how to print
-// find all the possible paths from a giove source to destination
+// find all the possible paths from a given source to destination
 // in a maze
 
 import static java.lang.System.*;
