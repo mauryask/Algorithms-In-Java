@@ -1,7 +1,7 @@
 // Longest Palindromic Subsequence
 /**
 * One more question is derived from here
-* --> minimum umber of deletions to meke string palindromic subsequence (LPS)
+* --> minimum number of deletions to meke string palindromic subsequence (LPS)
 * just find the logest palindromic subsequence 
 * and the check the length of this subsequence
 * find difference between original and this string
