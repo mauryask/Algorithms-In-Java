@@ -55,7 +55,7 @@ public class RodCuttingProblem
 			for(int j=1; j<n+1; j++)
 			{
 				if(length[i-1] <= j)
-					dp[i][j] = (int) Math.max(profit[i-1] + dp[i][j-length[i-1]], dp[i-1][j]);
+					dp[i][j] = Math.max(profit[i-1] + dp[i][j-length[i-1]], dp[i-1][j]);
 	            else
 					dp[i][j] = dp[i-1][j];
     		}

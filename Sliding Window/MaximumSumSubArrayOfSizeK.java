@@ -11,7 +11,7 @@ public class MaximumSumSubArrayOfSizeK
 {
 	public static void main(String [] args)
 	{
-		int A[] = new int[]{9,2,3,5,1,9,4,3,5};
+		int A[] = new int[]{1,2,3};
 		int k = 3;
 		int n = A.length;
 		out.println(solve(A, n, k));
