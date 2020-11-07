@@ -8,57 +8,66 @@ import static java.lang.System.*;
 public class RatMaze 
 {
 	int N;
-	RatMaze(int N){this.N = N;}
+	int M;
+	RatMaze (int M, int N)
+	{
+		this.N = N;
+		this.M = M;
+	}
 	
-	void prinMazePath(int maze[][], int x, int y)
+	void prinMazePath(int maze[][], int row, int col)
 	{
 		int sol[][] = new int[N][N]; 
-		boolean status = false;
-		status = mazePathUtil(maze, x, y, status, sol);
+		boolean status = mazePathUtil(maze, row, col,sol);
 		if(!status)
-			out.println("No path found");			
+			out.println("No path found");
+		else
+			out.print(status);
 	}
 	
-	boolean mazePathUtil(int maze[][], int x, int y, boolean status, int sol[][])
+	boolean mazePathUtil(int maze[][], int row, int col,int sol[][])
 	{
 		//base condition 
-		if(x == N-1 && y == N-1 && maze[x][y] == 1) //destination reached
+		if(row == M-1 && col == N-1 && maze[row][col] == 1) //destination reached
 		{
-			sol[x][y] = 1;
-			status = true;
+			sol[row][col] = 1;
 			printPath(sol); //print path
-			return status;
+			return true;
 		}
 		
-		sol[x][y] = 1;
-			
-		if(isSafe(maze,x ,y))
+		sol[row][col] = 1;
+		boolean res = false; 
+		
+		if(isSafe(maze ,row ,col))
 		{
-			if(x+1<N) //move right
-				status = mazePathUtil(maze, x+1, y, status, sol);
-			if(y+1<N) //move down
-				status = mazePathUtil(maze,x ,y+1 , status, sol);
-						
+			if(col+1 < N) //move right
+				//if(mazePathUtil(maze, row, col+1,sol)) return true;
+				res = mazePathUtil(maze, row, col+1,sol); 
+			if(row+1 < M) //move down
+				//if(mazePathUtil(maze ,row+1 ,col , sol)) return true;
+				res = mazePathUtil(maze ,row+1 ,col , sol);
 		}
-		sol[x][y] = 0;	
 		
-		return status;
+		sol[row][col] = 0;	
+		
+		return res;
 	}
 	
-	boolean isSafe(int maze[][], int x, int y)
+	boolean isSafe(int maze[][], int row, int col)
 	{
-		if(x>=0 && y>=0 && x<N && y<N && maze[x][y] == 1)
+		if(row>=0 && col>=0 && row < M && col < N && maze[row][col] == 1)
 			return true;
 		return false;
 	}
 	
 	void printPath(int sol[][])
 	{
-		for(int i=0;i<N; i++)
+		out.println("\n****************\n");
+		for(int[] x: sol)
 		{
-			for(int j=0;j<N;j++)
+			for(int y : x)
 			{
-				out.print(sol[i][j]+" ");
+				out.print(y+" ");
 			}
 			out.println();
 		}
@@ -66,11 +75,12 @@ public class RatMaze
 	
    public static void main(String args[])
    {
-	   int maze[][] = {{1,1,0,0},
-					   {0,1,0,0},
-					   {1,1,1,0},
-					   {0,0,1,1}};
-					  					  
-	  new RatMaze(4).prinMazePath(maze,0,0);				   
+	   int maze[][] =  {{1,1,1,1},
+					   {0,1,0,1},
+					   {1,1,1,1},
+					   {1,0,0,1}};
+	  int row = 0;
+      int col = 0;
+	  new RatMaze (4,4).prinMazePath(maze, row, col);				   
    }   
 }

@@ -14,7 +14,7 @@ public class MatrixChainMultiplication
 		   Arrays.fill(x,-1);
 	   }
 	   
-	   // cost of multiplying from "0 to n-1"
+	   //cost of multiplying from "0 to n-1"
 	   out.println(topDown(p,dp,0,n-1));
 	}
 	
