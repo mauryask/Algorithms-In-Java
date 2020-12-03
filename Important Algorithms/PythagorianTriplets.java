@@ -1,3 +1,5 @@
+// Question Number : #9
+
 //  finding pythagorian triplets  i.e.
 //  a^2 + b^2 = c^2 
 //  T(n) = O(n^2)
