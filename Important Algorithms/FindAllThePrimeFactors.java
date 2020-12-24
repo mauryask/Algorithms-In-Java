@@ -7,14 +7,14 @@ public class FindAllThePrimeFactors
 	public static void main(String [] args)
 	{
 	  int n = 315;
-	 method2(n);	
+	  method2(n);	
 	}
 	
 	// this is the best and ptimized solution
 	// to fins all the prime factors of a number
     static void method2(int n)
 	{
-		// finf all the 2's
+		// find all the 2's
 		
 		while(n % 2 == 0)
 		{

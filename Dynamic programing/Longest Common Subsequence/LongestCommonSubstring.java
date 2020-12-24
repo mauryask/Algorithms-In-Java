@@ -38,7 +38,7 @@ public class LongestCommonSubstring
 				 dp[i][j] = dp[i-1][j-1] + 1; //add 1 to diagonal element
 				 result = dp[i][j];
 				 if(max < result)
-				 {
+				 {;
 					max = result;
 					n1 = i-1; //s1
 					n2 = j-1; //s2

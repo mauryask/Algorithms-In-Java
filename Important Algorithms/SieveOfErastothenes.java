@@ -17,7 +17,7 @@ public class SieveOfErastothenes
 {
 	// size of the sieve array
 	static int n = 1000000; 
-	static boolean prime[] = new boolean [n];
+	static boolean prime[] = new boolean [n+1];
 	
 	public static void main(String [] args)
 	{
@@ -40,7 +40,7 @@ public class SieveOfErastothenes
 			  // mark all the factors of i >> from its square to num --true
 			  // since they are composite
 			  
-			  for(int j = i*i; j<num; j += i)
+			  for(int j = i*i; j<=num; j += i)
 				prime[j] = true;	
 			}
 		}
@@ -48,9 +48,9 @@ public class SieveOfErastothenes
 		// printing all the prime numbers 
 		// within the given range
 		
-		for(int i=2;i<num;i++)
+		for(int i=2;i<=num;i++)
 		{
-			out.print(prime[i] == false ? i+" " :"");
+			out.print(!prime[i]? i+" " :"");
 		}
 	}
 }

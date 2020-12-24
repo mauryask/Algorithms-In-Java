@@ -35,7 +35,7 @@ public class RodCuttingProblem
 			return 0;
 			
 		if(length[n-1] <= l)
-		  return (int) Math.max(profit[n-1] + recursive(length, profit, n, l-length[n-1]),
+		  return  Math.max(profit[n-1] + recursive(length, profit, n, l-length[n-1]),
 					recursive(length, profit, n-1,l));
 		else 
 			return recursive(length, profit, n-1, l);

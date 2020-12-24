@@ -4,8 +4,7 @@
 import static java.lang.System.*;
 
 public class Subsetsum 
-{
-		
+{		
 	public static void main(String [] srga)
 	{
 		int sub[] =  {4,3,2,7};
@@ -18,7 +17,7 @@ public class Subsetsum
 	/**
 	* Recursive Approach
 	* Worst Approach
-	* Time Complexity : O(n^2);
+	* Time Complexity : O(2^n);
 	* Space Complexity : Height of the recursion tree
 	*/	
 		

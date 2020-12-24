@@ -10,14 +10,11 @@ public class MatrixChainMultiplication
 	   int dp[][] = new int[n][n];
 	   
 	   for(int[] x: dp)
-	   {
 		   Arrays.fill(x,-1);
-	   }
 	   
 	   //cost of multiplying from "0 to n-1"
 	   out.println(topDown(p,dp,0,n-1));
 	}
-	
 	
 	// Recursive solution
 	// Time Complexity : O(2^n)
@@ -91,8 +88,7 @@ public class MatrixChainMultiplication
 					dp[i][k]+dp[k+1][j] + p[i]*p[k+1]*p[j+1]);
 				}
 			}
-		}
-		
+		}	
 		return dp[0][n-1];
 	}
  }

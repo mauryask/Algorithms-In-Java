@@ -67,7 +67,7 @@ public class Knapsack
 			return dp[n][w];
 	    
 		if(wt[n-1] <= w)
-			return dp[n][w] = (int)Math.max(val[n-1]+memoization(wt, val, w-wt[n-1], n-1),
+			return dp[n][w] = Math.max(val[n-1]+memoization(wt, val, w-wt[n-1], n-1),
 		                     memoization(wt, val, w, n-1));
 		else 
 			return dp[n][w] =  memoization(wt, val, w, n-1);	
@@ -93,7 +93,7 @@ public class Knapsack
 			for(int j=1; j<w+1; j++) //weights
 			{
 				if(wt[i-1] <= j)
-					dp[i][j] = (int)Math.max(val[i-1] + dp[i-1][j-wt[i-1]],
+					dp[i][j] = Math.max(val[i-1] + dp[i-1][j-wt[i-1]],
 				               dp[i-1][j]);
 				else if(wt[i-1] > w)
 					dp[i][j] = dp[i-1][j];
