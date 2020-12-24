@@ -1,9 +1,9 @@
 // here our assumption is the rat can move only in 
-// vertical nad horizotal direction
+// down and right direction
 // the source (0,0)
-// destination is (N-1, N-1)
+// destination is (m-1, n-1)
 
-// here we just only want to check (return true and false)
+// here we just only want to check (true/false)
 // is there any path form source to
 // destination
 // if yes then print it
@@ -11,9 +11,13 @@
 // matter how may paths are there 
 
 
+// is you eant to print 
+// all the paths then check all path 
+// problem source code
+
 import static java.lang.System.*;
 
-public class RatMaze
+public class RatMaze 
 {
 	int n;
 	int m;
@@ -71,12 +75,12 @@ public class RatMaze
 	  int maze[][] =  {{1,1,1,1},
 					   {0,1,0,1},
 					   {1,1,1,1},
-					   {1,0,0,1}};
+					   {1,0,0,0}};
 	  int row = 0;
       int col = 0;
 	  
-	  int m = 4; // total rows
-	  int n = 4; // total columns
+	  int m = 4;
+	  int n = 4;
 	  
 	  boolean status = new RatMaze(m,n).mazePathUtil(maze, row, col);	
       out.println(status);	  
