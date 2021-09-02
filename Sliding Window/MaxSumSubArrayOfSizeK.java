@@ -68,7 +68,7 @@ public class MaxSumSubArrayOfSizeK
 	{
 		int A[] = {1, 4, 2, 10, 23, 3, 1, 0, 20};
 		int n = A.length;
-		int k = 4;
+		int k = 4; //window size
 		
 		//out.println(maxSum(A, n, k));
 		 out.println(bruteForce(A, n, k));

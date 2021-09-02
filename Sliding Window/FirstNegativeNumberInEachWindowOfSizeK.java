@@ -85,7 +85,7 @@ public class FirstNegativeNumberInEachWindowOfSizeK
 	{
 		int A[] = {12, -1, -7, 8, -15, 30, 16, 28};
 		int n = A.length;
-		int k = 3;
+		int k = 3; // window size
 		
 		printNegative(A, n, k);
 		//bruteForce(A, n, k);
