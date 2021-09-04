@@ -18,18 +18,25 @@ public class LongestSubstringWithKUniqueCharacters
 		
 		while(j<n)
 		{
-			char ch = str.charAt(j);
-			
-			if(!map.containsKey(ch))
-				map.put(ch, i);
-			else 
-			{
-				maxLen = Math.max(maxLen, j-i);
-				map.clear();
-				i = j;
-				map.put(str.charAt(i), i);
-			}
-			
+			   char ch = str.charAt(j);
+			   
+			   map.put(ch, map.getOrDefault(ch, 0)+1);
+			   
+			   if(map.size() == j-i+1)
+				  maxLen =  Math.max(maxLen, j-i+1);
+			  
+			  else if(map.size() < j-i+1)
+			  {
+				  while(map.size() < j-i+1)
+				  {
+					ch =  str.charAt(i);
+					map.replace(ch, map.get(ch)-1);
+					if(map.get(ch) == 0)
+						map.remove(ch);
+					i++;  
+				  }	
+			  }
+				
 			j++;
 		}
 		
