@@ -1,6 +1,8 @@
 /*
 * Time complexity  : O(n)
 * Space complexity : O(1)
+*******************
+** fixed size window
 */
 import static java.lang.System.*;
 import java.util.*;

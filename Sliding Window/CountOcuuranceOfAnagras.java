@@ -1,6 +1,8 @@
 /*
 * Time complexity  : O(n)
 * Space complexity : O(k) as the map
+********************
+** fixed size window
 */
 import static java.lang.System.*;
 import java.util.*;
