@@ -1,77 +1,96 @@
-//JobSequencing with deadline
-//Algorithm uses greedy approach
-//time complexity in case of insertion sort: O(n^2)
-//in case of merge sort time complexity is 
-//(it helps a little bit not much) : O(n^2)
+/*
+* Job Sequencing with Deadline
+* Standard Greedy Problem
+********
+* T(n) : O(n*n)
+* S(n) : O(n)
+*/
+
+import static java.lang.System.*;
+import java.util.*;
 
 public class JobSequencingWithDeadLine
 {
-	public static void main(String [] args)
-	  {
-	     int P[] = {2,4,3,1,10}; //profit
-		 int D[] = {3,3,3,4,4}; //deadline
-		 
-	     int md  = findMaxDeadLine(D);//finding max deadline
-	     
-	     int S[] = new int[md]; // array for assigning the job
-	     
-	     sortProfitAndDeadLine(P, D); //sorting the profit and deadline arrays 
-	     
-	     int profit  = jobSequencingWithDeadLine(P, D, S, md);
-	     
-	     System.out.println(profit);
-	  }
-	
-	
-	static int jobSequencingWithDeadLine(int P[], int D[], int S[], int max) 
+	static class Jobs
 	{
-		int profit = 0;
-	    for(int i=0; i<P.length; i++)
-	    {
-	    	for(int j=D[i]-1; j>=0; j--) //D[i]-1 because indexing is taken from 0
-	    	{
-	    		if(S[j] == 0)
-	    		{
-	    			S[j] = Integer.MAX_VALUE;
-	    			profit += P[i];
-	    			break;
-	    		}
-	    	}
-	    }
-	    
-	    return profit;
-	}
-	
-	static void sortProfitAndDeadLine(int P[], int D[])
-	{
-		int p_temp;
-		int d_temp;
-		int i,j;
+		int deadline;
+		int profit;
+		char jobId;
 		
-		for(i=1; i<P.length; i++)
+		Jobs(char jobId, int deadline, int profit)
 		{
-			p_temp = P[i];
-			d_temp = D[i];
-			for(j= (i-1); j>=0 && p_temp > P[j]; j--)
-			{
-				P[j+1] = P[j];
-				D[j+1] = D[j];
-			}
-			
-			P[j+1] = p_temp;
-			D[j+1] = d_temp;					
+			this.deadline = deadline;
+			this.profit = profit;
+			this.jobId = jobId;
 		}
 	}
-
-		static int findMaxDeadLine(int D[])
+	
+	/* Finding max dedaline */
+	
+	static int findMax(List<Jobs> jobs, int n)
+	{
+		int max = Integer.MIN_VALUE;
+		for(int i=0; i<n; i++)
+		  max = Math.max(jobs.get(i).deadline, max);
+		return max;
+	}
+	
+	static void jobSequence(List<Jobs> jobs, int n)
+	{
+		/*
+		* Finding max deadline 
+		* you have to finish as many jobs as possible 
+		* within this deadline
+		*/
+		int maxDeadline = findMax(jobs, n);
+         
+		Jobs gantChart[] = new Jobs[maxDeadline];
+		
+		/*
+		* Sorting the job list
+		* based on profit in descending order
+		*/
+		
+		Collections.sort(jobs, (a,b)->{
+			return b.profit - a.profit;
+		});
+				
+		for(int i=0; i<n; i++)
 		{
-			int max = D[0];
-			for(int i=1; i<D.length; i++)
-			{
-				if(max < D[i])
-					max  = D[i];
-			}
-			
-			return max;
-		}		
+		   int jobDeadLine = jobs.get(i).deadline;
+		   int jobProfit = jobs.get(i).profit;
+		   
+		   /*
+		   * For each job check for a valid 
+		   * empty slot to put it
+		   * if slot found break
+		   */
+		   
+		   for(int j = jobDeadLine-1; j>=0; j--)
+		   {
+			   if(gantChart[j] == null)
+			   {
+				   gantChart[j] = jobs.get(i);
+				   break;
+			   }
+		   }
+		}
+
+	   /* Printing the job sequence */
+       for(Jobs j : gantChart)
+		   out.print(j.jobId+" ");		   
+	}
+	
+	public static void main(String [] args)
+	{	
+		List<Jobs> jobs = new ArrayList<>();
+				/* jobId, deadLine, profit*/	
+		jobs.add(new Jobs('a',2,100));
+		jobs.add(new Jobs('b',1,19));
+		jobs.add(new Jobs('c',2,27));
+		jobs.add(new Jobs('d',1,25));
+		jobs.add(new Jobs('e',3,15));
+		
+		jobSequence(jobs, jobs.size());
+	}
 }
