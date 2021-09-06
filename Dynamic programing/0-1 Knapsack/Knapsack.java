@@ -13,7 +13,7 @@ public class Knapsack
 		int n = 3;
 		int w = 8;
 		
-		/**
+		/*
 		* Initialization for memoization
 		* initialize each entry with "-1"
 		*/
@@ -32,12 +32,13 @@ public class Knapsack
 		out.println(bottomUp(wt, val, w, n));
 	}
 	
-	
-	/**
+	/*
 	* Recursive Approach
 	* The worst approach
 	* Time complexity : o(n^2) >> exponenetial time complexity
 	* Space complexity : O(n^2)
+	******
+	* (n-1) : since array has 0 based index -> 0
 	*/
 	
 	static int recursive(int wt[], int val[], int w, int n)
@@ -45,7 +46,8 @@ public class Knapsack
 		if(n==0 || w==0)
 			return 0;
 		if(wt[n-1] <= w)
-			return Math.max(val[n-1] + recursive(wt, val, w-wt[n-1], n-1),
+			return Math.max(val[n-1] + 
+		recursive(wt, val, w-wt[n-1], n-1),
 			       recursive(wt, val, w, n-1));
 		else //if(wt[n-1] > w)
 			return recursive(wt, val, w, n-1);
@@ -73,8 +75,8 @@ public class Knapsack
 			return dp[n][w] =  memoization(wt, val, w, n-1);	
 	}
 	
-	/**
-	* Memorization (Bottom Up) Approach
+	/*
+	* Memorization (Bottom Up) Appro ach
 	* The best approach
 	* Time complexity : o(n*w) >> exponenetial time complexity
 	* Space complexity : O(n*w) 
@@ -101,4 +103,4 @@ public class Knapsack
 		}
 		return dp[n][w];
 	}
-}
+} 

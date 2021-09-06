@@ -3,12 +3,13 @@
 * Space complexity : O(n)
 *****************
 ** variable size window
+** https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
 */
 
 import static java.lang.System.*;
 import java.util.*;
 
-public class LargestSubArraySum
+public class LargestSubArrayWithSumK
 {
 	static int largestSubArray(int A[], int n, int k)
 	{

@@ -14,16 +14,13 @@ public class EqualSumPartition
 	{
 		int sum = 0;
 		for(int i=0; i<n; i++)
-		{
 			sum += set[i];
-		}
 		
 		if(sum % 2 != 0) //if some is not even
 			return false;
+			
 		else //if sum is even
-		{
 		   return solveUtil(set, n, sum/2);	
-		}
 	}
 	
 	static boolean solveUtil(int set[], int n, int sum)

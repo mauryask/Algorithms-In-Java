@@ -6,7 +6,7 @@
 * The target sum problem could be solved by
 * like the asme approach
 * just count number of subset pairs 
-* that can produce target_sum (on assigninf (+/-) signs to each number) 
+* that can produce target_sum (on assigning (+/-) signs to each number) 
 */
 
 import static java.lang.System.*;
