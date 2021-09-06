@@ -41,6 +41,10 @@ public class JobSequencingWithDeadLine
 		* Finding max deadline 
 		* you have to finish as many jobs as possible 
 		* within this deadline
+		**************
+		* The purpose of maxDeadline is:  becaue no 
+		* job is going to take more than this to be 
+		* completed
 		*/
 		int maxDeadline = findMax(jobs, n);
          
