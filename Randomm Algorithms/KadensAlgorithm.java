@@ -25,19 +25,12 @@ public class KadensAlgorithm
 		* of largest sum subarray
 		*/
 		
-		int start = 0, end = 0;
+         int maxSum = A[0];
+         int sum = A[0];
+         int start = 0; 
+         int end = 0;
 		
-		/*
-		* If there is only one element 
-		* then it is itself greatest element (Nir-virodh)
-		*/
-		
-		int sum = A[0];
-		int maxSum = A[0];
-		
-		for(int i=1; i<n; i++)
-		{
-			/*
+		   /*
 			* Idea behind the algorithm: 
 			* **************
 			* Here tendency of each element 
@@ -48,28 +41,28 @@ public class KadensAlgorithm
 			* then Ai will not go with the sum
 			* instead it will start a new sum (see else part)
 			*/
-			
-			if(sum + A[i] > A[i])
+		
+        for(int i=1; i<n; i++)
+        {
+            if(sum + A[i] >= A[i])
+                sum += A[i];
+            else
 			{
-				sum += A[i];
-				
-				if(maxSum < sum)
-				{
-					maxSum = sum;
-					end = i;
-				}
-			}
-			else
-			{
-				sum = A[i];
 				start = i;
+				sum  = A[i];
 			}
-		}
-			
+            
+          if(maxSum < sum)
+		  {
+			  maxSum = sum;
+			  end = i;
+		  }
+        }
+		
 		for(int i=start; i<=end; i++)
 			out.print(A[i]+" ");
-		out.println();
-		return maxSum;
+        out.println();
+        return maxSum;
 	}
 	
 	
@@ -104,12 +97,13 @@ public class KadensAlgorithm
 		for(int i=start; i<=end; i++)
 			out.print(A[i]+" ");
 		out.println();
+		
 		return maxSum;
 	}
 	
 	public static void main(String [] args)
 	{
-		int A[] = {-2, -3, 4, -1, -2, 1, 5, -3};
+		int A[] = {-2,1,-3,4,-1,2,1,-5,4};
 		int n = A.length;
 		
 		out.println(subArrayWithLargestSum(A, n));
