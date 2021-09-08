@@ -5,6 +5,11 @@ import java.util.*;
 // if you don't want to print all the paths
 // but want only the total paths
 
+/*
+* Visited array is responsible to print all the paths
+* if u want to print single path you don't need this
+*/
+
 public class AllPossiblePaths
 {
     int m, n;
@@ -34,6 +39,19 @@ public class AllPossiblePaths
 		
 		if(isSafe(maze, row, col))
 		{
+			/*
+			* Since we are using visited array
+			* here in the if condition
+			* so we need to veryfy first 
+			* row and column index
+			* else we will get array index
+			* out of bounds
+			***************
+			* If visited is not used then 
+			* this task is already being performed 
+			* by isSafe function
+			*/
+			
 			//move down
 			if(row+1 < m && !visited[row+1][col])
 				allPath(maze, row+1, col);
@@ -54,7 +72,8 @@ public class AllPossiblePaths
 	
 	boolean isSafe(int maze[][], int  row, int col)
 	{
-		return row < m && row>=0 && col < n && col >=0 && maze[row][col]==1; 
+		return row < m && row>=0 && col < n 
+		&& col >=0 && maze[row][col]==1; 
 	}
 	
 	void printSol()
@@ -76,7 +95,7 @@ public class AllPossiblePaths
 						{0,1,1,0},
 						{1,1,1,1}};
 		int row = 0;
-		int col = 0
+		int col = 0;
 		
 		int m = 4; // total row 
 		int n = 4; // total col
