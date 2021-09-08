@@ -28,7 +28,8 @@ public class KadensAlgorithm
          int maxSum = A[0];
          int sum = A[0];
          int start = 0; 
-         int end = 0;
+		 int lMax = 0;
+		 int rMax = 0;
 		
 		   /*
 			* Idea behind the algorithm: 
@@ -44,7 +45,7 @@ public class KadensAlgorithm
 		
         for(int i=1; i<n; i++)
         {
-            if(sum + A[i] >= A[i])
+            if(sum + A[i] > A[i])
                 sum += A[i];
             else
 			{
@@ -55,11 +56,12 @@ public class KadensAlgorithm
           if(maxSum < sum)
 		  {
 			  maxSum = sum;
-			  end = i;
+			  lMax = start;
+			  rMax = i;
 		  }
         }
 		
-		for(int i=start; i<=end; i++)
+		for(int i=lMax; i<=rMax; i++)
 			out.print(A[i]+" ");
         out.println();
         return maxSum;
@@ -103,7 +105,7 @@ public class KadensAlgorithm
 	
 	public static void main(String [] args)
 	{
-		int A[] = {-2,1,-3,4,-1,2,1,-5,4};
+		int A[] = {-2,1,-3,4,-1,2,1,-7,4};
 		int n = A.length;
 		
 		out.println(subArrayWithLargestSum(A, n));
