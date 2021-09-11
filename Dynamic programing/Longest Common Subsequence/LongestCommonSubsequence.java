@@ -40,6 +40,7 @@ public class LongestCommonSubsequence
 	{
 		if(m==0 || n==0)
 			return 0;
+		
 		if(dp[m][n] != -1)
 			return dp[m][n];
 		
@@ -69,27 +70,31 @@ public class LongestCommonSubsequence
 			  if(x.charAt(i-1) == y.charAt(j-1))
 				  dp[i][j] = 1 + dp[i-1][j-1];
 			  else
-			  {
 				  dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
-			  }
 		  }
 	  }
 	  
 	  printSubsequence(dp,m,n,x,y); //print LCS
 	  
+	  for(int i=0; i<m+1; i++)
+	  {
+		  for(int j=0; j<n+1; j++)
+			  out.print(dp[i][j] +" ");
+		  out.println();
+	  }
+	  
 	  return dp[m][n];
 	}
 	
-	//printing longest common subsequence
-	
+	// Printing longest common subsequence
 	static void printSubsequence(int dp[][],int n1, int n2, String x, String y)
 	{
-		StringBuilder sb = new StringBuilder();
+		String s = "";
 		while(n1>0 && n2>0)
 		{
 			if(x.charAt(n1-1) == y.charAt(n2-1))
 			{
-				sb.append(x.charAt(n1-1));
+				s = x.charAt(n1-1) + s;
 				n1--; n2--;
 			}
 			else
@@ -101,6 +106,6 @@ public class LongestCommonSubsequence
 			}
 		}
 		
-		out.println(sb.reverse());
+		out.println(s);
 	}
 }

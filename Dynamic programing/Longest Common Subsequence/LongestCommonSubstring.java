@@ -8,15 +8,37 @@ public class LongestCommonSubstring
 {
 	public static void main(String [] args)
 	{
-		String x = "ABCKKHPACDPKL";
-		String y = "ABCKKHAACDPKL";
+		String x = "bcdaef";//"ABCKKHPACDPKL";
+		String y = "daef";//"ABCKKHAACDPKL";
+		
 		int m = x.length();
 		int n = y.length();
 		
-		out.println(solve(x, y, m, n));
+		out.println(bottomUp(x, y, m, n));
+		//out.println(recursive(x, y, m, n, 0));
 	}
 	
-	static int solve(String x, String y, int m, int n)
+	// Very Important
+	/* Recursive Equation
+	* 0 ; m=0 || n=0
+	* LCS(m-1, n-1, result+1) ; Xm = Ym
+	* Max(LCS(m-1, n, 0), LCS(m, n-1, 0), result) ; Xm != Yn
+	*/
+	
+	static int recursive(String x, String y, int m,
+	int n, int result)
+	{
+		if(m==0 || n == 0)
+			return result;
+		
+		if(x.charAt(m-1) == y.charAt(n-1))
+			return recursive(x, y, m-1, n-1, result+1);
+		else
+			return Math.max(Math.max(recursive(x, y, m-1, n, 0), 
+		recursive(x, y, m, n-1, 0)), result);
+	}
+	
+	static int bottomUp(String x, String y, int m, int n)
 	{
 		int dp[][] = new int[m+1][n+1];
 		
@@ -36,36 +58,46 @@ public class LongestCommonSubstring
 			 if(x.charAt(i-1) == y.charAt(j-1))
 			 {
 				 dp[i][j] = dp[i-1][j-1] + 1; //add 1 to diagonal element
+				 
 				 result = dp[i][j];
+				 
+				 // update the length
+				 // and last character location
+				 // of the LCS
+				 
 				 if(max < result)
-				 {;
+				 {
 					max = result;
-					n1 = i-1; //s1
-					n2 = j-1; //s2
+					n1 = i; //s1
+					n2 = j; //s2
 				 }
 			 }
 			 else
 				 dp[i][j] = 0;
 		 }
 	 }
+	 
 	 printResult(dp, n1, n2, x, y);
 	 return max;
 	}
 	
 	// Printing longest common substring
-	static void printResult(int dp[][], int n1, int n2, String x, String y)
+	
+	static void printResult(int dp[][], 
+	int m, int n, String x, String y)
 	{
-	    StringBuilder sb = new StringBuilder();
-	 	while(n1 >= 0 && n2 >=0)
+	    String s = "";
+		
+	 	while(dp[m][n] != 0)
 		{
-		   if(x.charAt(n1) != y.charAt(n2))
-		    break;
-		   else
-			  sb.append(x.charAt(n1));
-			n1--;
-			n2--;
+		   if(x.charAt(m-1) == y.charAt(n-1))
+		   {
+			   	s =  x.charAt(m-1) + s;
+				m--;
+				n--;
+		   }
 		}
 		
-		out.println(sb.reverse());
+		out.println(s);
 	}
 }

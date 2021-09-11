@@ -16,10 +16,10 @@ public class CoinChange2
 {
 	public static void main(String [] args)
 	{
-		int coin[] = {1,2,3};
-		int sum = 5;
-		int n = 3;
-		out.println(s(coin, sum, n));
+		int coin[] = {1,2,3,9};
+		int sum = 9;
+		int n = 4;
+		out.println(solve(coin, sum, n));
 	}
 	
 	//this solution is not applicable for every test case (leet code)
@@ -40,7 +40,7 @@ public class CoinChange2
 	static int topDown(int coin[], int sum, int n)
 	{
 		int dp[][] = new int[n+1][sum+1];
-		for(int i=1;i<sum+1; i++) ///initialize(infinite is used beacause for comparison)
+		for(int i=1;i<sum+1; i++) //initialize(infinite is used beacause for comparison)
 		  dp[0][i] = Integer.MAX_VALUE-1;
 				
 		for(int i=1; i<n+1; i++)
