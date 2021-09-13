@@ -122,19 +122,16 @@ public class CountOcuuranceOfAnagras
 		
 		for(int i=0; i<= n-k ; i++)
 		{
-			int j = i;
 			m1 = new HashMap<>();
-			int count = 1;
-			boolean flag = true;
-			
-			while(count <= k)
+		
+			for(int j=i; j<i+k; j++)
 			{
 				char ch = str.charAt(j);
 				m1.put(ch, m1.getOrDefault(ch, 0)+1);
-				j++;
-				count++;
 			}
 
+			boolean flag = true;
+			
 			for(Map.Entry<Character, Integer> m 
 			: map.entrySet())
 			{

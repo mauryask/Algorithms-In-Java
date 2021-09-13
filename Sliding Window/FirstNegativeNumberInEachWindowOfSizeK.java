@@ -9,7 +9,6 @@ import java.util.*;
 
 public class FirstNegativeNumberInEachWindowOfSizeK
 {
-	
 	static void printNegative(int A[], int n, int k)
 	{
 		int i=0, j=0;
@@ -22,8 +21,12 @@ public class FirstNegativeNumberInEachWindowOfSizeK
 						
 			if(j-i+1 == k)
 			{
-				int rslt = !list.isEmpty() ?
-				list.get(0) : 0;
+				/*
+				* '*' means the window do not have a
+				* negative number
+				*/
+				String rslt = !list.isEmpty() ?
+				list.get(0)+"" : "*";
 				out.print(rslt+" ");
 				
 				/*
@@ -55,13 +58,9 @@ public class FirstNegativeNumberInEachWindowOfSizeK
 	{
 		for(int i=0; i<=n-k; i++)
 		{
-			int count = 1;
-			int j = i;
-			// this flag checks if -ve number 
-			// present in the window or not
 			boolean flag = false;
-			
-			while(count <= k)
+					
+			for(int j = i; j<i+k; j++)
 			{
 				// if first -ve found 
 				// print it and break the loop
@@ -72,14 +71,12 @@ public class FirstNegativeNumberInEachWindowOfSizeK
 					break;
 				}
 				
-				count++;
-				j++;
 			}
 			
 			// -ve number not present in the window
 			// print 0
 			if(!flag)
-				out.print(0+" ");
+				out.print(" * ");
 		}
 	}
 	

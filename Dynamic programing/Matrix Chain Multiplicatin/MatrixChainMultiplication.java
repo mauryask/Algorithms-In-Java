@@ -5,7 +5,7 @@ public class MatrixChainMultiplication
 {
 	public static void main(String [] args)
 	{  
-	   int p[] =  new int[]{40, 20, 30, 10, 30, 80, 47, 45, 78, 41, 12, 23, 74, 89, 23, 52};
+	   int p[] = {2,3,4,5};//{40, 20, 30, 10, 30, 80, 47, 45, 78, 41, 12, 23, 74, 89, 23, 52};
 	   int n = p.length - 1;
 	   int dp[][] = new int[n][n];
 	   
@@ -13,7 +13,8 @@ public class MatrixChainMultiplication
 		   Arrays.fill(x,-1);
 	   
 	   //cost of multiplying from "0 to n-1"
-	   out.println(topDown(p,dp,0,n-1));
+	   // out.println(topDown(p,dp,0,n-1));
+	   out.println(recursive(p,0,n-1));
 	}
 	
 	// Recursive solution

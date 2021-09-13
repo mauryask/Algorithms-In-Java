@@ -31,6 +31,13 @@ public class LongestRepeatingSubsequences
 		return dp[n][n];
 	}
 	
+	
+	/*
+	* Just take the same string as 2nd string
+	* and find longest common subsequence
+	* with a small modification 
+	* that i!=j, since they are same strings
+	*/
 	static void printSeq(String str, int n, int dp[][])
 	{
 		int i= n;

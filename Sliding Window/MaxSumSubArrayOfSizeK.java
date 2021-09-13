@@ -49,16 +49,10 @@ public class MaxSumSubArrayOfSizeK
 		
 		for(int i=0; i <= n-k; i++)
 		{
-			int sum = 0;
-			int j = i;
-			int count = 1;
-			
-			while(count <= k)
-			{
+			int sum = 0;			
+		
+		    for(int j=i; j<i+k; j++)
 				sum += A[j];
-				j++;
-				count++;
-			}
 			
 			maxSum = Math.max(sum, maxSum);
 		}
