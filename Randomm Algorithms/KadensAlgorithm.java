@@ -11,8 +11,7 @@ import static java.lang.System.*;
 import java.util.*;
 
 public class KadensAlgorithm
-{
-	
+{	
 	static int subArrayWithLargestSum(int[] A, int n)
 	{
 		/* corner case */

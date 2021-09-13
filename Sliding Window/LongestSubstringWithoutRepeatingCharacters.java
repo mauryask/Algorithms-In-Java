@@ -44,13 +44,11 @@ public class LongestSubstringWithoutRepeatingCharacters
 			  
 			  /*
 			  * If map size is less than window size
-			  * means some character has bee repeated
+			  * means some character has been repeated
 			  * so start removing the charactres from left
 			  * until all the characters in the window
 			  * are unique thats what we wanted
 			  */
-			  else if(map.size() < j-i+1)
-			  {
 				  while(map.size() < j-i+1)
 				  {
 					ch =  str.charAt(i);
@@ -58,9 +56,7 @@ public class LongestSubstringWithoutRepeatingCharacters
 					if(map.get(ch) == 0)
 						map.remove(ch);
 					i++;  
-				  }	
-			  }
-				
+				  }					
 			j++;
 		}
 		

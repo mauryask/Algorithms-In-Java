@@ -26,16 +26,15 @@ public class LargestSubArrayWithSumK
 			// if subarray starts from 0
 			if(sum == k)
 				maxLen = i+1;
-			
+
 			// put the sum in the map
 			// id it is absent along with the index
 		    map.putIfAbsent(sum ,i);
 			
 			// check if (sum - k already exists)
-			if(map.containsKey(sum-k))
-			   maxLen = Math.max(maxLen, i-map.get(sum-k));
+			if(map.containsKey(sum-k))		       
+				 maxLen = Math.max(maxLen, i-map.get(sum-k));
 		}
-		
 		return maxLen;
 	}
 	
@@ -53,9 +52,9 @@ public class LargestSubArrayWithSumK
 		
 		for(int i=0; i<n; i++)
 		{
-			 int sum = A[i];
+			 int sum = 0;
 			 
-			 for(int j=i+1; j<n; j++)
+			 for(int j=i; j<n; j++)
 			 {
 				 sum += A[j];
 				 

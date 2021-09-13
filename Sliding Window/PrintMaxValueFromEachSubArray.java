@@ -8,7 +8,7 @@
 import static java.lang.System.*;
 import java.util.*;
 
-public class FindMaxOfAllSubArrays 
+public class PrintMaxValueFromEachTheSubArray
 {
 	static List<Integer> findMax(int A[], int n, int k)
 	{

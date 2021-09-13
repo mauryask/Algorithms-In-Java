@@ -16,7 +16,7 @@ import java.util.*;
 
 public class FindSmallestWindow
 {
-	static int findMinSubSing(String s, String t)
+	static int findMinSubString(String s, String t)
 	{
 		int m = s.length();
 		int n = t.length();
@@ -72,7 +72,7 @@ public class FindSmallestWindow
 				* containing all the characters as in 
 				* the second string
 				***************
-				* new gative frequency means there are 
+				* negative frequency means there are 
 				* extra characters in the string
 				*/
 				if(count == 0)
@@ -86,9 +86,14 @@ public class FindSmallestWindow
 						/*
 						* Maintain the length of minimum window
 						*/
-						minLength = Math.min(minLength, j-i+1);
-						windowBound[0] = i;
-						windowBound[1] = j;
+						
+						if(minLength > j-i+1)
+						{
+						   	minLength = j-i+1;
+							windowBound[0] = i;
+							windowBound[1] = j;	
+						}
+						
 						ch = s.charAt(i);
 						
 						if(map.containsKey(ch))
@@ -117,28 +122,101 @@ public class FindSmallestWindow
 			j++;
 		}
 		
-		/*
-		* print sub-string it self
-		*/
-		
-		out.println(s.substring(windowBound[0],windowBound[1]+1));
-		
+		// printing sub-string
+		out.println(s.substring(windowBound[0], windowBound[1]+1));		
+			
 		/*
 		* If minLength is -Inf means 
 		* minLength is not updated (no window present
 		* that can satishfy the given criteria)
 		*/
-		
 		return minLength == Integer.MAX_VALUE ? 0 : minLength;
 	}
+			
+	
+	/*
+	* T(n) : O(n*n*k)
+	* S(n) : O(n)
+	*/	
+			
+    static int bruteForce(String s1, String s2)
+	{
+		int n = s1.length();
+		
+		Map<Character, Integer> map = new HashMap<>();
+		
+		Map<Character, Integer> m1 = new HashMap<>();
+		
+		int minLength = Integer.MAX_VALUE;
+	
+		
+		for(int i=0; i<s2.length(); i++)
+		{
+			char ch = s2.charAt(i);
+			m1.put(ch, m1.getOrDefault(ch, 0)+1);
+		}
+		
+		for(int i=0; i<n; i++)
+		{
+			for(int j=i; j<n; j++)
+			{
+				char ch = s1.charAt(j);
+				map.put(ch, map.getOrDefault(ch, 0)+1);
+			      
+				  // if window size is less than the 
+				  // length of the string-2, you can never
+				  // find a window containing 
+				  // all the chracters of s2
+				   if(j-i+1 < s2.length())
+					   continue;
+				  
+					boolean flag = true;
 					
+					for(Map.Entry<Character, Integer> m : m1.entrySet())
+					{
+						char key = m.getKey();
+						int value  = m.getValue();
+						
+						if(map.getOrDefault(key, 0) != value)
+						{
+							flag = false;
+							break;
+						}
+					}
+					
+					/*
+					* If this sub-array contains same number of 
+					* characters then update min length
+					*/
+					if(flag)
+					{
+						minLength = Math.min(minLength, j-i+1);
+						/*
+						* Once found a window 
+						* just break becuse the further 
+						* windows are going to be larger
+						* than the current one
+						*/
+						break;
+					}
+			}
+			
+			map.clear();
+		}
+		
+		return minLength;
+	}
+		
+		
+			
 	
 	public static void main(String [] args)
 	{
-		String s = "TOTMTAPTAT";
-		String t = "ATT";
+		String s = "this is a test string";//"TOTMTAPTAT";
+		String t = "tist";//"ATT";
 		
-		out.println(findMinSubSing(s, t));
+		out.println(findMinSubString(s, t));
+		//out.println(bruteForce(s, t));
 	}
 }
 

@@ -15,6 +15,7 @@ public class MaxSubstringwithKUniqueCharacters
 	{
 	   int i =0, j=0;
 	   int maxLen = 0;
+	   
 	   Map<Character, Integer> map = new HashMap<>();
 	   
 	   while(j<n)
@@ -49,7 +50,7 @@ public class MaxSubstringwithKUniqueCharacters
 		  * in a particular window
 		  */
 		  
-		  else if(map.size() > k)
+		  while(map.size() > k)
 		  {
 		  		ch =  str.charAt(i);
 				map.replace(ch, map.get(ch)-1);
