@@ -27,14 +27,18 @@ public class LargestSubArrayWithSumK
 			if(sum == k)
 				maxLen = i+1;
 
-			// put the sum in the map
-			// id it is absent along with the index
+			/* 
+			* put the sum in the map
+			* if it is absent along with the index
+			*/
+			
 		    map.putIfAbsent(sum ,i);
 			
 			// check if (sum - k already exists)
 			if(map.containsKey(sum-k))		       
 				 maxLen = Math.max(maxLen, i-map.get(sum-k));
 		}
+		
 		return maxLen;
 	}
 	
