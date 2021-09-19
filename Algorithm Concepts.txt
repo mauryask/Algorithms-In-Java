@@ -1,2 +1,0 @@
-1: what is Brute Force Strategy of solving problem
->> https://www.quora.com/What-is-a-brute-force-way-of-solving-problems
