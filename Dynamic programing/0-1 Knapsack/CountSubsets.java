@@ -1,7 +1,7 @@
-// similiar to subset sum problem
-// instead of return true and false we just 
-// have to return the number of subsets
-
+/* similiar to subset sum problem
+* instead of return true and false we just 
+* have to return the number of subsets
+*/
 /**
 * The target sum problem could be solved by
 * like the asme approach
