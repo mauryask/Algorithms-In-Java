@@ -60,7 +60,7 @@ public class FindSmallestWindow
 				**********
 				* frequency of character 0 means the the charcater
 				* has been found in that window in the same amount
-				* as in second string
+				* as in the second string
 				*/
 				
 				map.replace(ch, map.get(ch)-1);

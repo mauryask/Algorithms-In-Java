@@ -17,7 +17,7 @@ public class FirstNegativeNumberInEachWindowOfSizeK
 		while(j<n)
 		{
 			if(A[j] < 0)
-				list.add(A[j]);
+				list.add(A[j]); 
 						
 			if(j-i+1 == k)
 			{

@@ -26,9 +26,9 @@ public class KadensAlgorithm
 		
          int maxSum = A[0];
          int sum = A[0];
-         int start = 0; 
-		 int lMax = 0;
-		 int rMax = 0;
+         int temp = 0; 
+		 int start = 0;
+		 int end = 0;
 		
 		   /*
 			* Idea behind the algorithm: 
@@ -48,19 +48,19 @@ public class KadensAlgorithm
                 sum += A[i];
             else
 			{
-				start = i;
+				temp = i;
 				sum  = A[i];
 			}
             
           if(maxSum < sum)
 		  {
 			  maxSum = sum;
-			  lMax = start;
-			  rMax = i;
+			  start = temp;
+			  end = i;
 		  }
         }
 		
-		for(int i=lMax; i<=rMax; i++)
+		for(int i=start; i<=end; i++)
 			out.print(A[i]+" ");
         out.println();
         return maxSum;

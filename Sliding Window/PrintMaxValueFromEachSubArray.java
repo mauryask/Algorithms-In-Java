@@ -8,7 +8,7 @@
 import static java.lang.System.*;
 import java.util.*;
 
-public class PrintMaxValueFromEachTheSubArray
+public class PrintMaxValueFromEachSubArray
 {
 	static List<Integer> findMax(int A[], int n, int k)
 	{
@@ -32,7 +32,7 @@ public class PrintMaxValueFromEachTheSubArray
 			*/
 			
 			final int temp = A[j];
-			max.removeIf(x->(x<temp));
+			max.removeIf(x->(x<=temp));
 				
 			max.add(temp);
 			
