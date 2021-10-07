@@ -46,15 +46,74 @@ public class KnuthMorrisPratternMatchingAlgorithm
 		return false;
 	}
 	
+	static boolean knuthMorris(String s1, String s2, int m, int n)
+	{
+		// Creating the pie table 
+		Map<Character, Integer> map = new HashMap<>();
+		int pie[] = new int[n+1];
+		
+		for(int i=0; i<n; i++)
+		{
+			char ch = s2.charAt(i);
+			if(!map.containsKey(ch))
+			{
+				map.put(ch, i);
+				pie[i] = 0;
+			}
+			else
+			{
+				pie[i] = map.get(ch) + 1;
+				map.replace(ch, map.get(ch)+1);				
+			}
+		}
+					
+		 int j = -1;
+		 int i = 0;
+		 int start = 0;
+		 boolean flag = false;
+		 
+		 while(i<m)
+		 {
+			 char ch = s1.charAt(i);
+			 
+			 if(ch == s2.charAt(j+1))
+			 {
+				if(!flag) 
+				{
+					start = i;
+					flag = true;
+				}
+				 i++;
+				 j++;
+			 }
+			 else
+			 {
+                 if(j == -1)
+					i++;
+                 else 
+					j = pie[j]-1;
+                 flag = false;				
+			 }
+			 
+			 if(j == n-1)
+			 {
+				 out.println("pattern found at: " + start);
+				 return true;
+			 }
+		 }
+		 
+		 return false;
+	}
+	
 	public static void main(String [] args)
 	{
-		String s1 = "AAAAAAAAAAAAAAAAAB";
-		String s2 = "AAAAB";
+		String s1 = "CDABDEABCDAB";
+		String s2 = "ABCDAB";
 		
 		int m = s1.length();
 		int n = s2.length();
 		
-		//knuthMorris(s1, s2, m , n);
-		out.println(bruteForce(s1, s2, m, n));
+		out.println(knuthMorris(s1, s2, m , n));
+		//out.println(bruteForce(s1, s2, m, n));
 	}
 }
