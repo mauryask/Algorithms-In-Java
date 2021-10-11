@@ -1,3 +1,7 @@
+/*
+* Read more about proper prefix and proper suffix  
+* and LPS https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/
+*/
 import static java.lang.System.*;
 import java.util.*;
 
@@ -5,7 +9,7 @@ import java.util.*;
 * T(n) : O(m*n)
 * S(n) : O(1)
 */
-public class KnuthMorrisPratternMatchingAlgorithm 
+public class KnuthMorrisPrattPratternMatchingAlgorithm
 {
 	static boolean bruteForce(String s1, String s2, int m, int n)
 	{
@@ -48,9 +52,14 @@ public class KnuthMorrisPratternMatchingAlgorithm
 	
 	static boolean knuthMorris(String s1, String s2, int m, int n)
 	{
-		// Creating the pie table 
+		/* Creating the lps table */
 		Map<Character, Integer> map = new HashMap<>();
-		int pie[] = new int[n+1];
+		
+		/*
+		* LPS : Longest proper prefix which is also suffix
+		*/
+		
+		int lps[] = new int[n+1];
 		
 		for(int i=0; i<n; i++)
 		{
@@ -58,14 +67,19 @@ public class KnuthMorrisPratternMatchingAlgorithm
 			if(!map.containsKey(ch))
 			{
 				map.put(ch, i);
-				pie[i] = 0;
+				lps[i] = 0;
 			}
 			else
 			{
-				pie[i] = map.get(ch) + 1;
+				lps[i] = map.get(ch) + 1;
 				map.replace(ch, map.get(ch)+1);				
 			}
 		}
+		
+		
+		for(int x: lps)
+			out.print(x+" ");
+		out.println();
 					
 		 int j = -1;
 		 int i = 0;
@@ -91,7 +105,7 @@ public class KnuthMorrisPratternMatchingAlgorithm
                  if(j == -1)
 					i++;
                  else 
-					j = pie[j]-1;
+					j = lps[j]-1;
                  flag = false;				
 			 }
 			 
@@ -107,8 +121,8 @@ public class KnuthMorrisPratternMatchingAlgorithm
 	
 	public static void main(String [] args)
 	{
-		String s1 = "CDABDEABCDAB";
-		String s2 = "ABCDAB";
+		String s1 = "AABAACAABAA";
+		String s2 = "AABAACAABAA";
 		
 		int m = s1.length();
 		int n = s2.length();

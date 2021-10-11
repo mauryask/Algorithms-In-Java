@@ -43,9 +43,10 @@ public class JobSequencingWithDeadLine
 		* within this deadline
 		**************
 		* The purpose of maxDeadline is:  becaue no 
-		* job is going to take more than this to be 
-		* completed
+		* jobs you can finish are not going to be more 
+		* than this
 		*/
+		
 		int maxDeadline = findMax(jobs, n);
          
 		Jobs gantChart[] = new Jobs[maxDeadline];
