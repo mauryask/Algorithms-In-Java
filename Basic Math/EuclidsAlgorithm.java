@@ -1,6 +1,3 @@
-//this algorithm is used to find GCD of two numbers
-//https://www.techiedelight.com/euclids-algorithm-to-find-gcd-of-two-numbers/
-
 import java.util.Scanner;
 
 public class EuclidsAlgorithm 
@@ -19,28 +16,34 @@ public class EuclidsAlgorithm
          sc.close();
 	}
 
-	/**
+	/*
+	* Euclids Algorithm
+	*****
 	* This is the naive approach
 	* worst approach
 	* Time Complexity : O(min(a, b))
+	*****
+	** Here th eidea is to find the largest integer
+	** that can divide both a and b
 	*/
 	
 	static int naiveApproach(int a, int b)
 	{
+		// the GCD can not be gretaer than min(a, b)
 		int m = (int) Math.min(a,b);
+		
 		for(int i=m; i>0; i--)
 		{
+			// finding the first number that can divide both
 			if(a % i == 0 && b % i ==0)
-			{
-			   return i;
-			}		
+			   return i;	
 		}
-		
+		// 1 is always GCD if no number is found
 		return 1;
 	}
 	
 	
-	/**
+	/*
 	* This is better than above approach
 	* but not the best 
 	* as if one number is very much larger than other one
@@ -65,15 +68,14 @@ public class EuclidsAlgorithm
 		if(a==b)
 			return a;
 		
-			 if(a>b)
-				return  euclidGCD(a-b, b);
-			 else 
-				return euclidGCD(a, b-a);
-             	
+		if(a>b)
+			return  euclidGCD(a-b, b);
+		else 
+			return euclidGCD(a, b-a);
 	}
 	
 	
-    /**
+    /*
 	* This is better than above approach
 	* and best if numbers are not coprime
 	* not going to take more than 5 times the 
