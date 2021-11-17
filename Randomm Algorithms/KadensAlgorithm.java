@@ -52,12 +52,12 @@ public class KadensAlgorithm
 				sum  = A[i];
 			}
             
-          if(maxSum < sum)
-		  {
-			  maxSum = sum;
-			  start = temp;
-			  end = i;
-		  }
+            if(maxSum < sum)
+		    {
+			   maxSum = sum;
+			   start = temp;
+			   end = i;
+		    }
         }
 		
 		for(int i=start; i<=end; i++)

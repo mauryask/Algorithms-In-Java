@@ -3,7 +3,7 @@
 * S(n) : O(1)
 ****************
 * Sliding window
-** https://www.geeksforgeeks.org/equilibrium-index-of-an-array/
+** https://www.geeksforgeeks.o7rg/equilibrium-index-of-an-array/
 */
 import static java.lang.System.*;
 import java.util.*;

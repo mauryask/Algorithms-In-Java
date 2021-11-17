@@ -20,7 +20,6 @@ public class MaxSubstringwithKUniqueCharacters
 	   
 	   while(j<n)
 	   {
-		   
 		   char ch = str.charAt(j);
 		   
 		   /*

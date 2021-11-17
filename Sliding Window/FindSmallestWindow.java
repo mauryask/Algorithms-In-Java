@@ -75,8 +75,6 @@ public class FindSmallestWindow
 				* negative frequency means there are 
 				* extra characters in the string
 				*/
-				if(count == 0)
-				{
 					/*
 					* Start optimization of the window length
 					* by removing uneccessary characters
@@ -112,11 +110,10 @@ public class FindSmallestWindow
 							*/							
 							if(isZero && isNonZero)
 								count++;								
-						}
+							}
 						
 						i++;
 					}
-				}
 	 		}
 			
 			j++;
@@ -167,6 +164,7 @@ public class FindSmallestWindow
 				  // length of the string-2, you can never
 				  // find a window containing 
 				  // all the chracters of s2
+				  
 				   if(j-i+1 < s2.length())
 					   continue;
 				  
