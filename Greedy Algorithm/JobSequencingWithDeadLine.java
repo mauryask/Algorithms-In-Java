@@ -29,10 +29,10 @@ public class JobSequencingWithDeadLine
 	
 	static int findMax(List<Jobs> jobs, int n)
 	{
-		int max = Integer.MIN_VALUE;
-		for(int i=0; i<n; i++)
-		  max = Math.max(jobs.get(i).deadline, max);
-		return max;
+		int maxDeadline = Integer.MIN_VALUE;
+		for(Jobs j: jobs)
+		  maxDeadline = Math.max(j.deadline, maxDeadline);
+		return maxDeadline;
 	}
 	
 	static void jobSequence(List<Jobs> jobs, int n)
@@ -42,9 +42,10 @@ public class JobSequencingWithDeadLine
 		* you have to finish as many jobs as possible 
 		* within this deadline
 		**************
-		* The purpose of maxDeadline is:  becaue no 
-		* jobs you can finish are not going to be more 
-		* than this
+		* The purpose of maxDeadline is: 
+		* Since each job takes 1 unit time to be completed 
+		* so maximum possible number of jobs that can be performed
+		* will be equal to maxDeadline if deadline
 		*/
 		
 		int maxDeadline = findMax(jobs, n);

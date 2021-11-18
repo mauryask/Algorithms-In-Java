@@ -41,7 +41,7 @@ public class MatrixChainMultiplication
 	// Top Down Approach
 	// Time Complexity : O(n^3)
 	// Space Complexity: O(n) --> depth of recursion tree
-	
+	 
 	static int topDown(int p[], int dp[][], int i,int j)
 	{
 		if(i==j)
@@ -74,8 +74,7 @@ public class MatrixChainMultiplication
 		
 		for(int i=0;i<n; i++)
 			dp[i][i] = 0;
-		
-		
+				
 		for(int l=2; l<=n; l++)
 		{
 			for(int i=0; i<n-l+1; i++)
@@ -90,6 +89,7 @@ public class MatrixChainMultiplication
 				}
 			}
 		}	
+		
 		return dp[0][n-1];
 	}
  }

@@ -26,7 +26,6 @@ public class Knapsack
 		}
 		*/
 		
-		
 		out.println(recursive(wt, val, w, n));
 		out.println(memoization(wt, val, w, n));
 		out.println(bottomUp(wt, val, w, n));
@@ -76,7 +75,7 @@ public class Knapsack
 	}
 	
 	/*
-	* Memorization (Bottom Up) Appro ach
+	* Memorization (Bottom Up) Approach
 	* The best approach
 	* Time complexity : o(n*w) >> exponenetial time complexity
 	* Space complexity : O(n*w) 
@@ -101,6 +100,7 @@ public class Knapsack
 					dp[i][j] = dp[i-1][j];
 			}
 		}
+		
 		return dp[n][w];
 	}
 } 

@@ -48,7 +48,7 @@ public class RatMaze
 		if(isSafe(maze ,row ,col))
 		{
 			/*
-			* Here it is cumpollsory to use 
+			* Here it is cumpulsory to use 
 			* col and row index verification
 			* else we will get outOfBounds in sol array
 			*/

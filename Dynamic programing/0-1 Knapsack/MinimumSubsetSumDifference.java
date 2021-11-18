@@ -27,7 +27,7 @@ public class MinimumSubsetSumDifference
 		n = valid_sum.size();
 		int min = Integer.MAX_VALUE;
 		
-		for(int i=0; i<=n/2; i++)
+		for(int i=0; i<n/2; i++)
 		{
 		   // (s2-s1) ** take absolute value because 
 		   // may be s1 > s2 ** then it will give negative value
