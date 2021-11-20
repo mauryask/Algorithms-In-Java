@@ -8,8 +8,10 @@ public class LongestCommonSubstring
 {
 	public static void main(String [] args)
 	{
-		String x = "bcdaef";//"ABCKKHPACDPKL";
-		String y = "daef";//"ABCKKHAACDPKL";
+		// Checking longest palindromic substring
+		// it same as longest common subsequnce
+		String x = "forgeeksskeegfor";//"ABCKKHPACDPKL";
+		String y = "rofgeeksskeegrof";//"daef";//"ABCKKHAACDPKL";
 		
 		int m = x.length();
 		int n = y.length();
