@@ -9,8 +9,8 @@ public class LongestCommonSubsequence
 
 	public static void main(String [] args)
 	{
-		String x = "abcdef";
-		String y = "bcdfe";
+		String x = "ecfbefdcfca";
+		String y = "badfcbebbf";
 		int m = x.length();
 		int n = y.length();
 				
