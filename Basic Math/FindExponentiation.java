@@ -35,6 +35,29 @@ public class FindExponentiation
 		return result;
 	}
 	
+	static int myOwnUnderStanding(int x, int n)
+	{
+		int result = 1;
+		
+		while(true)
+		{
+			if(n%2 == 1)
+				result *= x;
+			
+			// if n is odd then n/2 and (n-1)/2 
+			// are going to give the same result
+			n = n/2;
+			
+			// prevents an extra multiplication
+			if(n==0)
+				break;
+			
+			x = x*x;
+		}
+		
+		return result;
+	}
+	
 	
 	static int findExpoRecursive(int x, int n)
 	{
@@ -53,9 +76,10 @@ public class FindExponentiation
 	
 	public static void main(String args[])
 	{
-		int x = 3;
-		int n = 0;
+		int x = 2;
+		int n = 6;
 		
-		out.println(findExpo(x, n));
+		//out.println(findExpo(x, n));
+		out.println(myOwnUnderStanding(x, n));
 	}
 }

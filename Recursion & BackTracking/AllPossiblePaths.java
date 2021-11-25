@@ -1,14 +1,15 @@
+/*
+* T(n) : O(2^N)
+* S(n) : O(mxn)
+**********
+** We do need visited array here 
+** Since we are moving checking 
+** in top and left cells 
+** hence we can endup checking in same cells 
+** multiple times 
+*/
 import static java.lang.System.*;
 import java.util.*;
-
-// remove soloution array from every where
-// if you don't want to print all the paths
-// but want only the total paths
-
-/*
-* Visited array is responsible to print all the paths
-* if u want to print single path you don't need this
-*/
 
 public class AllPossiblePaths
 {
@@ -27,53 +28,39 @@ public class AllPossiblePaths
 	
 	void allPath(int maze[][], int row, int col)
 	{
-		if(row == m-1 && col == n-1 & maze[row][col] == 1)
+		if(row == m-1 && col == n-1 && maze[row][col] == 1)
         {
 			count++;
 			sol[row][col] = 1;
 			printSol();
 		}			
 		
-		sol[row][col] = 1;
-		visited[row][col] = true;
+        // if it is safe then 
+		// only go to that cell		
 		
 		if(isSafe(maze, row, col))
 		{
-			/*
-			* Since we are using visited array
-			* here in the if condition
-			* so we need to veryfy first 
-			* row and column index
-			* else we will get array index
-			* out of bounds
-			***************
-			* If visited is not used then 
-			* this task is already being performed 
-			* by isSafe function
-			*/
-			
-			//move down
-			if(row+1 < m && !visited[row+1][col])
-				allPath(maze, row+1, col);
+		     sol[row][col] = 1;
+		     visited[row][col] = true;
+			 
 			//move up
-			if(row-1 >=0  && !visited[row-1][col])
-				allPath(maze, row-1, col);
-			//move right
-			if(col+1 < n   && !visited[row][col+1])
-				allPath(maze, row, col+1);
+				allPath(maze, row-1, col);			
+			//move down
+				allPath(maze, row+1, col);
 			//move left
-			if(col-1>=0  && !visited[row][col-1])
-				allPath(maze, row, col-1);	
+				allPath(maze, row, col-1);					
+			//move right
+				allPath(maze, row, col+1);
+			 
+			 sol[row][col] = 0;
+		     visited[row][col] = false;
 		}
-		
-		sol[row][col] = 0;
-		visited[row][col] = false;
 	}
 	
 	boolean isSafe(int maze[][], int  row, int col)
 	{
 		return row < m && row>=0 && col < n 
-		&& col >=0 && maze[row][col]==1; 
+		&& col >=0 && maze[row][col]==1 && !visited[row][col]; 
 	}
 	
 	void printSol()
@@ -91,9 +78,9 @@ public class AllPossiblePaths
 	public static void main(String [] args)
 	{
 		int maze[][] = {{1,0,1,1},
-			            {1,1,1,1},
+			            {1,1,0,1},
 						{0,1,1,0},
-						{1,1,1,1}};
+						{1,0,1,1}};
 		int row = 0;
 		int col = 0;
 		
@@ -104,3 +91,43 @@ public class AllPossiblePaths
 		out.println(count);
 	}
  }
+
+/*
+** Checking for only one path 
+** whether available or not
+    
+	boolean allPath(int maze[][], int row, int col)
+	{
+		if(row == m-1 && col == n-1 && maze[row][col] == 1)
+        {
+			sol[row][col] = 1;
+			printSol();
+			return true;
+		}			
+			
+		if(isSafe(maze, row, col))
+		{
+		     sol[row][col] = 1;
+		     visited[row][col] = true;
+			 
+			//move up
+				if(allPath(maze, row-1, col))
+                    return true;					
+			//move down
+				if(allPath(maze, row+1, col))
+					return true;
+			//move left
+				if(allPath(maze, row, col-1))
+					return true;		
+			//move right
+				if(allPath(maze, row, col+1))
+					return true;
+			 
+			 sol[row][col] = 0;
+		     visited[row][col] = false;
+		}
+		
+		return false;
+	}
+
+*/

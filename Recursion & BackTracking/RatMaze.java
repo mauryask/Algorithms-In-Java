@@ -1,22 +1,10 @@
 /*
-* Here rat can move only in 
-* down and right directions
-* the source (0,0)
-* destination is (m-1, n-1)
-*/
-
-/* 
-* We only just want to check (true/false)
-* is there any path form source to
-* destination o not
-* if yes then print it
-* print only one does not 
-* matter how may available
-*/
-
-/*
-* T(n) : O(m*n)
-* S(n) : O(m*n)
+* T(n) : O(2^N)
+* S(n) : O(mxn)
+*****
+** Don't need visited here
+** since we are moving only in right 
+** and downward directions
 */
 
 import static java.lang.System.*;
@@ -26,6 +14,7 @@ public class RatMaze
 	int n;
 	int m;
 	int sol[][];
+	static int count = 0;
 	
 	RatMaze(int m, int n)
 	{
@@ -34,55 +23,27 @@ public class RatMaze
 		sol = new int[m][n];
 	}
 	
-	boolean mazePathUtil(int maze[][], int row, int col)
+	void mazePathUtil(int maze[][], int row, int col)
 	{
 		if(row == m-1 && col == n-1 && maze[row][col] == 1) 
 		{
 			sol[row][col] = 1;
+			count++;
 			printPath(sol);
-			return true;
 		}
-		
-		sol[row][col] = 1;
-
+	
 		if(isSafe(maze ,row ,col))
 		{
-			/*
-			* Here it is cumpulsory to use 
-			* col and row index verification
-			* else we will get outOfBounds in sol array
-			*/
+			sol[row][col] = 1;
 			
-			/*
-			* If path found then true will be returned
-			* and when if condition becomes true
-			* return true and no more function call for 
-			* down
-			*/
-			
+			//move down			
+			mazePathUtil(maze ,row+1 ,col);
 			//move right
-			if(col+1 < n && mazePathUtil(maze, row, col+1)) 
-			   return  true; 
-			
-			/* 
-			* if above is true control will never go down
-			* hence no more function call
-			*/
-			
-			//move down
-			if(row+1 < m && mazePathUtil(maze ,row+1 ,col)) 
-				return true;
-			return false;
+		    mazePathUtil(maze, row, col+1);
+				
+		    sol[row][col] = 0;	
 		}
-		
-		sol[row][col] = 0;	
-		
-		return false;
 	}
-	
-	/*
-	* Check if a move is valid or not
-	*/
 	
 	boolean isSafe(int maze[][], int row, int col)
 	{
@@ -90,9 +51,6 @@ public class RatMaze
 		col < n && maze[row][col] == 1;
 	}
 	
-	/*
-	* Print Path
-	*/
 	void printPath(int sol[][])
 	{
 		for(int[] x: sol)
@@ -110,19 +68,47 @@ public class RatMaze
 					   {0,1,0,1},
 					   {1,1,1,1},
 					   {1,0,0,1}};
-					   
-	  /*
-	  * Source
-	  */				   
+			   
 	  int row = 0;
       int col = 0;
 	  
-	  int m = maze.length;
-	  int n = maze[0].length;
+	  int m = 4;
+	  int n = 4;
 	  
-	  boolean status = new RatMaze(m,n)
+	  new RatMaze(m,n)
 	  .mazePathUtil(maze, row, col);	
 	  
-      out.println(status);	  
+	  out.println(count);
    }   
 }
+
+/*
+** printing onle one path  
+** if availabale
+
+	void mazePathUtil(int maze[][], int row, int col)
+	{
+		if(row == m-1 && col == n-1 && maze[row][col] == 1) 
+		{
+			sol[row][col] = 1;
+			printPath(sol);
+			return true;
+		}
+	
+		if(isSafe(maze ,row ,col))
+		{
+			sol[row][col] = 1;
+			
+			//move down			
+			if(mazePathUtil(maze ,row+1 ,col))
+			   return true;
+			//move right
+		    if(mazePathUtil(maze, row, col+1))
+				return true;
+				
+		    sol[row][col] = 0;	
+		}
+		
+		return false;
+	}
+*/

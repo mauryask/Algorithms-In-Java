@@ -23,22 +23,21 @@ public class NQueensProblem
     static int count  = 0;
 	public static void main(String [] args)
 	{
-		int n = 5;
-		// use the below varibale only if you want all the possible solution
-		boolean res = false; //by default assume there is no solution : false
+		int n = 4;
 		int board[][] = new int[n][n];
-		out.println("Is solution possible: "+placeTheQueen(board,0,n, res));
+		placeTheQueen(board,0,n);
 		out.println("Total solution: "+count);
 	}
 	
-	static boolean placeTheQueen(int board[][], int col,int n/*print all solution take res here*/,boolean res)
+	// printing all the possible 
+	// solution 
+	static void placeTheQueen(int board[][], int col,int n)
 	{
 		if(col==n)
 		{
 			printSol(board,n);
 			count++;
-			out.println("\n********\n");
-			return true;
+			out.p rintln();
 		}
 		
 		for(int i=0;i<n; i++)
@@ -46,15 +45,10 @@ public class NQueensProblem
 		   if(isSafe(board, i, col, n))
 		   {
 			   board[i][col] = 1;
-			   res = placeTheQueen(board,col+1, n, res);
-			   /*if(placeTheQueen(board, col+1, n))
-				   return true;*/
+			   placeTheQueen(board,col+1, n);
 			   board[i][col] = 0;
 		   }			   
 		}
-		
-		return res;
-		//return false;
 	}
 	
 	static boolean isSafe(int board[][],int row,int col, int n)
@@ -90,3 +84,32 @@ public class NQueensProblem
 		}
 	}
 }
+
+
+/*
+
+*** printing only one solution
+*** returning true and false only
+
+	static boolean placeTheQueen(int board[][], int col,int n)
+	{
+		if(col==n)
+		{
+			printSol(board,n);
+			return true;
+		}
+		
+		for(int i=0;i<n; i++)
+		{
+		   if(isSafe(board, i, col, n))
+		   {
+			   board[i][col] = 1;
+			   if(placeTheQueen(board,col+1, n))
+				   return true;
+			   board[i][col] = 0;
+		   }			   
+		}
+		
+		return false;
+	}
+*/

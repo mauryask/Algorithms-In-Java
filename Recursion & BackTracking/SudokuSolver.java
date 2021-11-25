@@ -13,10 +13,6 @@ public class SudokuSolver
 		// Done with all the rows
 		if(i== n)
 		{
-			// if you will not print matrix here 
-			// you will not get corret sudoku 
-			// because of the backtracking 
-			// most of the values will be set to 0 again
 			printBoard(board);
 		    return;	
 		}
