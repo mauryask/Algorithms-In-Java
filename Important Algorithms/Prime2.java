@@ -1,7 +1,7 @@
 // Algorithm to check if a number is prime or not
 // time complexity : O(√n)
 // idea os to find all the possible divisor of the number
-// if it is greatervthan two then composite else prime (1 and itself)
+// if it is greater than two then composite else prime (1 and itself)
 
 import static java.lang.System.*;
 class Test

@@ -70,5 +70,4 @@ public class PrintAllTheSubsets
        output.add(A[n-1]);
 	   getSubset(A, output,result, n-1);
    }
-   
 }
