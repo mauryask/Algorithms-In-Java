@@ -100,7 +100,7 @@ public class MinCostPathInTheMaze
 			Arrays.fill(x, -1);
 	    //out.println(minCost(cost, m,n,0,0));
 	    //out.println(topDown(cost,dp, m,n,0,0));
-		//bottomUp(cost,dp,m,n);
-		optimizedBottomUp(cost,m,n);
+		bottomUp(cost,dp,m,n);
+		//optimizedBottomUp(cost,m,n);
 	}
 }
