@@ -1,6 +1,6 @@
 /*
-* T(n) : O(log n)> since every time the problem 
-* reduces to half
+* T(n) : O(log n): since every time the problem 
+* reduces to half 
 * S(n) : O(1)
 ***********
 * idea is to break x^n = (x^2)^n/2 (if n is even)
