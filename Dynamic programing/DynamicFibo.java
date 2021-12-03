@@ -2,6 +2,7 @@
 // time complexty O(n)
 // space complexity O(n)
 // but this is still not that much efficien
+
 import java.util.*;
 public class DynamicFibo 
 {
@@ -42,6 +43,7 @@ public class DynamicFibo
 //space complexity O(n)
 //but this is not efficient that much
 //tabular approach 
+
       static void fib(int N, int cache[])
 	  {
 		  for(int i=0; i<=N; i++)
@@ -66,10 +68,12 @@ public class DynamicFibo
 static int fib1(int N, int cache[])
 {
 	if(N<2)
-		return N;
+		return cache[N] = N;
+    
 	if(cache[N]!=0)
 		return cache[N];
-	return cache[N] = fib1(N-1, cache) + fib1(N-2, cache);
+	
+    return cache[N] = fib1(N-1, cache) + fib1(N-2, cache);
 }
 
 

@@ -1,4 +1,4 @@
-// check id strign x is subsequence of string y
+// check if strign x is subsequence of string y
 
 import static java.lang.System.*;
 public class SequencePatterMatching
