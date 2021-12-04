@@ -2,20 +2,6 @@ import java.util.Scanner;
 
 public class EuclidsAlgorithm 
 {
-
-	public static void main(String[] args)
-	{
-		
-		Scanner sc = new Scanner(System.in);
-		int a = sc.nextInt();
-		int b = sc.nextInt();
-		
-		//int n = euclidGCD(a, b);
-		 int n = naiveApproach(a, b);
-		System.out.print(n);
-         sc.close();
-	}
-
 	/*
 	* Euclids Algorithm
 	*****
@@ -110,9 +96,15 @@ public class EuclidsAlgorithm
 	* two numbers are coprime (GCD = 1)
     */
 	
-  static void extendedEuclidsAlgo(int a, int b)
-  {
-       //will be completed soon	  
-  }
-
+	public static void main(String[] args)
+	{	
+		Scanner sc = new Scanner(System.in);
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+		
+		//int n = euclidGCD(a, b);
+		 int n = naiveApproach(a, b);
+		System.out.print(n);
+         sc.close();
+	}
 }

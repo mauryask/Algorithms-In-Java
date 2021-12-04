@@ -1,7 +1,7 @@
 import static java.lang.System.*;
 import java.util.*;
 
-public class FibonocciSeries 
+public class FibonocciSeries2 
 {
 	// Top down (memoization)
 	/*
