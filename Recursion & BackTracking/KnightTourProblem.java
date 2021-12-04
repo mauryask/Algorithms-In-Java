@@ -1,5 +1,5 @@
 /*
-* T(n) : O(2^n)
+* T(n) : O(8^n*n)
 * S(n) : O(n*n)
 */
 import static java.lang.System.*;

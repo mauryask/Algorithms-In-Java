@@ -21,14 +21,7 @@ import java.util.*;
 public class NQueensProblem
 {
     static int count  = 0;
-	public static void main(String [] args)
-	{
-		int n = 4;
-		int board[][] = new int[n][n];
-		placeTheQueen(board,0,n);
-		out.println("Total solution: "+count);
-	}
-	
+		
 	// printing all the possible 
 	// solution 
 	static void placeTheQueen(int board[][], int col,int n)
@@ -37,7 +30,7 @@ public class NQueensProblem
 		{
 			printSol(board,n);
 			count++;
-			out.p rintln();
+			out.println();
 		}
 		
 		for(int i=0;i<n; i++)
@@ -82,6 +75,14 @@ public class NQueensProblem
 			
 			out.println();
 		}
+	}
+	
+	public static void main(String [] args)
+	{
+		int n = 4;
+		int board[][] = new int[n][n];
+		placeTheQueen(board,0,n);
+		out.println("Total solution: "+count);
 	}
 }
 

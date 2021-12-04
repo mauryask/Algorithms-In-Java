@@ -1,5 +1,5 @@
 /*
-* T(n) : O(2^N)
+* T(n) : O(2^m*n)
 * S(n) : O(mxn)
 *****
 ** Don't need visited here
