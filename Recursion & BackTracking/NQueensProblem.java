@@ -13,6 +13,7 @@ Two queens will be under attack if:
 -> they are in same row 
 -> same coloumn 
 -> same diagonal
+** T(n) : O((8))
 */
 
 import static java.lang.System.*;
@@ -24,6 +25,7 @@ public class NQueensProblem
 		
 	// printing all the possible 
 	// solution 
+	
 	static void placeTheQueen(int board[][], int col,int n)
 	{
 		if(col==n)

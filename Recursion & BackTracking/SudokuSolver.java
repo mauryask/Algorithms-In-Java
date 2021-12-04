@@ -10,7 +10,7 @@ public class SudokuSolver
 {
 	static void solveSudoku(int[][] board, int i, int j,int n)
 	{
-		// Done with all the rows
+		// Done with all the rows 
 		if(i== n)
 		{
 			printBoard(board);
