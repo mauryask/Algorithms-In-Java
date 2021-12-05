@@ -34,8 +34,8 @@ public class Knapsack
 	/*
 	* Recursive Approach
 	* The worst approach
-	* Time complexity : o(n^2) >> exponenetial time complexity
-	* Space complexity : O(n^2)
+	* Time complexity : o(2^n) complexity
+	* Space complexity : O(logn: base 2)
 	******
 	* (n-1) : since array has 0 based index -> 0
 	*/

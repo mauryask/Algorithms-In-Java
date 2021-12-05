@@ -2,28 +2,11 @@
 // length of the longest common subsequences
 
 import static java.lang.System.*;
+import java.util.*;
 
 public class LongestCommonSubsequence
 {
 	static int dp[][];
-
-	public static void main(String [] args)
-	{
-		String x = "ecfbefdcfca";
-		String y = "badfcbebbf";
-		int m = x.length();
-		int n = y.length();
-				
-		dp = new int[m+1][n+1];
-		// for bottom up (memoization)
-		/*for(int i=0;i<m+1; i++)
-		{
-			for(int j=0;j<n+1; j++)
-				dp[i][j] = -1;
-		}
-		*/
-		out.println("The length of the LCS: "+bottomUp(x,y,m,n,dp));
-  	}
 	
 	static int recursive(String x, String y,int m, int n)
 	{
@@ -39,7 +22,7 @@ public class LongestCommonSubsequence
 	static int memoization(String x, String y, int m, int n)
 	{
 		if(m==0 || n==0)
-			return 0;
+			return dp[m][n] = 0;
 		
 		if(dp[m][n] != -1)
 			return dp[m][n];
@@ -108,4 +91,19 @@ public class LongestCommonSubsequence
 		
 		out.println(s);
 	}
+	
+	public static void main(String [] args)
+	{
+		String x = "ecfbefdcfca";
+		String y = "badfcbebbf";
+		int m = x.length();
+		int n = y.length();
+				
+		dp = new int[m+1][n+1];
+		
+		//out.println("The length of the LCS: "+bottomUp(x,y,m,n,dp));
+		for(int[] sol : dp)
+			Arrays.fill(sol,-1);
+		out.println(memoization(x, y, m, n));
+  	}
 }

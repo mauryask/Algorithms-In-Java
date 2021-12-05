@@ -16,14 +16,14 @@ public class CountOcuuranceOfAnagras
 		* this map conatins charcater 
 		* count of pattern string
 		*/
+		
 		Map<Character, Integer> map = new HashMap<>();
 	
 		for(int i = 0; i<k; i++)
 		{
 			char c1 = pattern.charAt(i);
 			map.put(c1, map.getOrDefault(c1, 0)+1);
-		}
-					
+		}			
 				
 	    int i=0, j=0;
 		int count = 0;

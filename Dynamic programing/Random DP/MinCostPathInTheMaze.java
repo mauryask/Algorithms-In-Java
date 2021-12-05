@@ -6,8 +6,8 @@ import java.util.*;
 public class MinCostPathInTheMaze
 {
 	/*
-	* T(n) : O(2^m*n)
-	* S(n) : O(height of the recursion tree)
+	* T(n) : O(m*n)
+	* S(n) : O(log m*n, base 3)
 	*/
 	static int minCost(int[][] cost, int m, int n, int x, int y)
 	{

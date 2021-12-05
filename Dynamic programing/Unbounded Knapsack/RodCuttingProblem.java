@@ -15,8 +15,9 @@ public class RodCuttingProblem
 		int l = 3; //length of the rod
 		int n = 3; //number of items (total length array size)
 		
-       //this is for recursive program
+       //This is for recursive program
         int dp[][] = new int[n+1][l+1];		
+		
 		for(int i=0; i<=n; i++)
 		{
 			for(int j=0;j<=l; j++)

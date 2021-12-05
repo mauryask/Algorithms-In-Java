@@ -11,22 +11,13 @@ import static java.lang.System.*;
 import java.util.*;
 
 public class StiarCaseProblem
-{
-	public static void main(String [] args)
-	{
-		int n = 5; //stairs 
-		int m = 2; // max jump length
-		
-		int dp[] = new int[n+1];
-        /*out.print(stairCase(n,dp));*/		
-		out.print(recursive(n));
-	}
-		
+{	
     // Top down (memoization)
 	/*
 	* T(n) : O(n)
-	* S(n): O(n) > recursion stack
+	* S(n): O(n)
 	*/
+	
 	static int stairCase(int n, int dp[])
 	{
 		if(n==0 || n==1)
@@ -44,5 +35,37 @@ public class StiarCaseProblem
 		if(n==1 || n==0)
 			return 1;
 		return recursive(n-1) + recursive(n-2);
+	}
+	
+	// simple iterative solution 
+	static int totalWays(int n)
+	{
+		// base case
+		if(n==0 || n==1)
+			return 1;
+		
+		int a = 1;
+		int b = 1;
+		int sum  = 0;
+		
+		for(int i=1; i<n; i++)
+		{
+			sum = a+b;
+			a = b;
+			b = sum;
+		}
+		
+		return sum;
+	}
+	
+	public static void main(String [] args)
+	{
+		int n = 4; //stairs 
+		int m = 2; // max jump length
+		
+		int dp[] = new int[n+1];
+        /*out.print(stairCase(n,dp));*/		
+		out.print(recursive(n));
+		//out.println(totalWays(n));
 	}
 }

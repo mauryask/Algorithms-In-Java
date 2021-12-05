@@ -9,8 +9,8 @@ public class MinimumSubsetSumDifference
 {
 	public static void main(String [] args)
 	{
-		int set[] = {1,2,7};
-		int n = 3;
+	int set[] = {3, 1, 4, 2, 2, 1};//{1,2,7};
+		int n = set.length;
 		
 		int sum = 0;
 		//take sum as the sum of all the elemnts of the set
