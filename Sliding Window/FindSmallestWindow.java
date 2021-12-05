@@ -1,13 +1,10 @@
 /*
-* Very Important
-****************
 * Time complexity  : O(n)
 * Space complexity : O(n)
-****************
-Variable size sliding window
-* Note: Not working with all the test case
-* at leet code (Concept is fine for F2F Interview)
-*****
+**
+* Note: Works with all the test cases 
+* in leet code
+**
 https://www.geeksforgeeks.org/find-the-smallest-window-in-a-string-containing-all-characters-of-another-string/
 */
 
@@ -16,123 +13,68 @@ import java.util.*;
 
 public class FindSmallestWindow
 {
-	static int findMinSubString(String s, String t)
-	{
-		int m = s.length();
-		int n = t.length();
-		int i=0, j=0;
-		int minLength = Integer.MAX_VALUE;
-		int windowBound[] = new int[2];
-		
-		Map<Character, Integer> map = new HashMap<>();
-		
-		/*
-		* Count the frequency of all the 
-		* charcaters in second string and
-		* store it in map 
-		*/
-		
-		for(int k=0; k<n; k++)
-		{
-			char ch = t.charAt(k);
-			map.put(ch, map.getOrDefault(ch, 0)+1);
-		}			
-		
-		/*
-		* Initialize the count with
-		* the map size
-		* Here count represents the number of unique charcaters
-		* in the map
-		*/		
-		int count = map.size();		
-				
-		while(j<m)
-		{
-			char ch = s.charAt(j);
-			
-			if(map.containsKey(ch))
-			{
-				/*
-				* If map cotains charcter then decrease 
-				* the frequency by 1
-				* At the same time check if frequency
-				* of a charcater becomes 0 decrease the count
-				**********
-				* frequency of character 0 means the the charcater
-				* has been found in that window in the same amount
-				* as in the second string
-				*/
-				
-				map.replace(ch, map.get(ch)-1);
-				if(map.get(ch) == 0)
-					count--;
-				
-				/*
-				* Count becomes 0  means we got a window
-				* containing all the characters as in 
-				* the second string
-				***************
-				* negative frequency means there are 
-				* extra characters in the string
-				*/
-					/*
-					* Start optimization of the window length
-					* by removing uneccessary characters
-					*/
-					while(count == 0)
-					{
-						/*
-						* Maintain the length of minimum window
-						*/
-						
-						if(minLength > j-i+1)
-						{
-						   	minLength = j-i+1;
-							windowBound[0] = i;
-							windowBound[1] = j;	
-						}
-						
-						ch = s.charAt(i);
-						
-						if(map.containsKey(ch))
-						{
-							boolean isZero = map.get(ch) == 0?
-							true : false;	
-							map.replace(ch, map.get(ch)+1);
-							boolean isNonZero = map.get(ch) != 0?
-								true : false;	
-							
-							/*
-							* When the frequency of a character
-							* in the map changes from 0 to non zero
-							* increase the count (means this window no longer
-							* possible candidate for the solution)
-							*/							
-							if(isZero && isNonZero)
-								count++;								
-							}
-						
-						i++;
-					}
-	 		}
-			
-			j++;
-		}
-		
-		// printing sub-string
-		out.println(s.substring(windowBound[0], windowBound[1]+1));		
-			
-		/*
-		* If minLength is -Inf means 
-		* minLength is not updated (no window present
-		* that can satishfy the given criteria)
-		*/
-		return minLength == Integer.MAX_VALUE ? 0 : minLength;
-	}
-			
+    static int minWindow(String s1, String s2, int m, int n)
+    {
+        Map<Character, Integer> map = new HashMap<>();
+        
+        for(int i = 0; i<n; i++)
+        {
+            char ch = s2.charAt(i);
+            map.put(ch, map.getOrDefault(ch, 0)+1);
+        }
+        
+        int count = map.size();
+        int minLength = Integer.MAX_VALUE;
+        int i = 0, j = 0;
+        int start  = 0;
+        int end = 0;
+        
+        while(j<m)
+        {
+            char ch = s1.charAt(j);
+            
+            if(map.containsKey(ch))
+            {
+               map.replace(ch, map.get(ch)-1);
+               
+               if(map.get(ch) == 0)
+                   count--;
+               
+               while(count == 0)
+               {
+                   if(minLength > j-i+1)
+                   {
+                       minLength = j-i+1;
+                       start = i;
+                       end = j;
+                   }                     
+                   
+                   ch = s1.charAt(i);
+                   
+                   if(map.containsKey(ch))
+                   {
+                       boolean isZero = map.get(ch) == 0 ? true : false;
+                       map.replace(ch, map.get(ch)+1);
+                       boolean isNonZero = map.get(ch) != 0 ? true : false;
+                       
+                       if(isZero && isNonZero)
+                           count++;
+                   }
+                    
+                   i++;
+               }
+            }
+            
+            j++;
+        }
+
+        out.println(s1.substring(start, end+1));
+        return minLength;
+    }
+    
 	
 	/*
-	* T(n) : O(n*n*k)
+	* T(n) : O(n*n*k) > if there are m characters int the m1 at any time
 	* S(n) : O(n)
 	*/	
 			
@@ -140,13 +82,11 @@ public class FindSmallestWindow
 	{
 		int n = s1.length();
 		
-		Map<Character, Integer> map = new HashMap<>();
-		
+		Map<Character, Integer> map = new HashMap<>();	
 		Map<Character, Integer> m1 = new HashMap<>();
 		
 		int minLength = Integer.MAX_VALUE;
-	
-		
+
 		for(int i=0; i<s2.length(); i++)
 		{
 			char ch = s2.charAt(i);
@@ -204,17 +144,15 @@ public class FindSmallestWindow
 		
 		return minLength;
 	}
-		
-		
-			
 	
-	public static void main(String [] args)
-	{
-		String s = "this is a test string";//"TOTMTAPTAT";
-		String t = "tist";//"ATT";
-		
-		out.println(findMinSubString(s, t));
-		//out.println(bruteForce(s, t));
-	}
+    public static void main(String [] args)
+    {       
+        String s1 = "this is a test string";
+        String s2 = "tist";
+        int m = s1.length();
+        int n = s2.length();
+        
+        out.println(minWindow(s1, s2, m, n));
+    }	
 }
 
