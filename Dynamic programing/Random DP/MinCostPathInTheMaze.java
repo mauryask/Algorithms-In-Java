@@ -6,7 +6,7 @@ import java.util.*;
 public class MinCostPathInTheMaze
 {
 	/*
-	* T(n) : O(m*n)
+	* T(n) : < O(m*n)
 	* S(n) : O(log m*n, base 3)
 	*/
 	static int minCost(int[][] cost, int m, int n, int x, int y)
@@ -48,6 +48,7 @@ public class MinCostPathInTheMaze
 	           		if(i==m-1 && j==n-1)
 						dp[i][j] = cost[i][j];
 					else if(i==m-1)
+						 
 					  dp[i][j] = cost[i][j] + dp[i][j+1];
 				    else if(j==n-1)
 						dp[i][j] = cost[i][j] + dp[i+1][j];
@@ -95,12 +96,12 @@ public class MinCostPathInTheMaze
                          {1, 5, 3} };
 						 int m = 3;
 						 int n= 3;
-		int dp[][] = new int[m][m];
+		int dp[][] = new int[m][n];
 		for(int x[] : dp)
 			Arrays.fill(x, -1);
 	    //out.println(minCost(cost, m,n,0,0));
 	    //out.println(topDown(cost,dp, m,n,0,0));
-		bottomUp(cost,dp,m,n);
-		//optimizedBottomUp(cost,m,n);
+		//bottomUp(cost,dp,m,n);
+		optimizedBottomUp(cost,m,n);
 	}
 }
