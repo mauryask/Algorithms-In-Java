@@ -26,6 +26,7 @@ public class MaxSumSubArrayOfSizeK
 			* increse 'i' to point start of another 
 			* window of same size
 			*/
+			
 			 if(j-i+1 == k)
 			 {
 				 maxSum = Math.max(sum, maxSum);

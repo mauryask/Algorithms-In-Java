@@ -1,14 +1,12 @@
-//this algorithm is used to validate the credit card numbers
-//here is the link for this algorithm
-//https://www.geeksforgeeks.org/luhn-algorithm/
+// This Algorithm is used to 
+// validate the Credit Card numbers
+
 package com.pnstech;
 import java.util.*;
 import static java.lang.System.*;
 public class LuhnAlgo {
-
 	public static void main(String[] args)
-	{
-				
+	{				
 		Scanner sc = new Scanner(in);
 		String cards = sc.next();
 		sc.close();
