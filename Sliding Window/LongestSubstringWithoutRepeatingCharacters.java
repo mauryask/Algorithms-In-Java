@@ -84,6 +84,8 @@ public class LongestSubstringWithoutRepeatingCharacters
 				
 				if(map.size() == j-i+1)
 					maxLen = Math.max(maxLen, j-i+1);
+				else if(map.size() < j-i+1)
+					break;
 			}
 			
 			map.clear();

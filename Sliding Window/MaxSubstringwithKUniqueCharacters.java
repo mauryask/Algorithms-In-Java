@@ -63,7 +63,7 @@ public class MaxSubstringwithKUniqueCharacters
 
 		return maxLen;	   
 	}
-		
+	
 	public static void main(String [] args)
 	{
 		String str =  "aabacbebebe";

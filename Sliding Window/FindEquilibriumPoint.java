@@ -27,6 +27,7 @@ public class FindEquilibriumPoint
             if(s1 == s2)
               return i;				
 		 }
+		 }
 		 
 		 return -1;
 	}
