@@ -96,7 +96,7 @@ public class Knapsack
 				if(wt[i-1] <= j)
 					dp[i][j] = Math.max(val[i-1] + dp[i-1][j-wt[i-1]],
 				               dp[i-1][j]);
-				else if(wt[i-1] > w)
+				else if(wt[i-1] > j)
 					dp[i][j] = dp[i-1][j];
 			}
 		}
