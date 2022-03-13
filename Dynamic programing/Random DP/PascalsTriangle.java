@@ -4,8 +4,8 @@ import java.util.*;
 public class PascalsTriangle 
 {
 	//  Dynamic programming 
-	//  T(n) : O(mn)
-	//  S(n) : O(mn)
+	//  T(n) : O(n*n)
+	//  S(n) : O(n*n)
 	
 	static void pascTri(int n, int[][] dp)
 	{
@@ -25,6 +25,9 @@ public class PascalsTriangle
 	
 	// Brute force solution
 	// Every term in pascals trianlge is: (nCr)
+	// T(n) : O(n*n*n)
+	// S(n) : O(n)
+	
 	static void bruteForce(int n)
 	{
 		for(int i=0; i<=n; i++)
