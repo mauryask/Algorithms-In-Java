@@ -6,8 +6,9 @@ import java.util.*;
 public class MinCostPathInTheMaze
 {
 	/*
-	* T(n) : < O(m*n)
-	* S(n) : O(log m*n, base 3)
+	* T(n) : O(3^(m*n))
+	* S(n) : O(height of the recursion tree)
+	* Exponantial time complexity
 	*/
 	static int minCost(int[][] cost, int m, int n, int x, int y)
 	{
@@ -75,11 +76,11 @@ public class MinCostPathInTheMaze
 			for(int j=n-1; j>=0; j--)
 			{
 	           		if(i==m-1 && j==n-1)
-						cost[i][j] = cost[i][j];
+						continue; // do nothing (same value)
 					else if(i==m-1)
-					 cost[i][j] = cost[i][j] +cost[i][j+1];
+					 cost[i][j] += cost[i][j+1];
 				    else if(j==n-1)
-						cost[i][j] = cost[i][j] + cost[i+1][j];
+						cost[i][j] += cost[i+1][j];
 					else
 						cost[i][j] = Math.min(Math.min(cost[i+1][j], cost[i][j+1]),cost[i+1][j+1])+cost[i][j];
 			}
