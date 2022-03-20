@@ -1,6 +1,11 @@
 /*
-* Time complexity  : O(n)
-* Space complexity : O(n)
+** since you might have to remove all the occurance 
+** of the an elemnts in the map if map size exceeds
+** k
+* Time complexity  : O(n * max-frequency)
+** since we are not going to have more than k+1 
+** elemnts in the map at any time
+* Space complexity : O(k)
 ***************
 ** https://www.geeksforgeeks.org/find-the-longest-substring-with-k-unique-characters-in-a-given-string/
 ** Variable size window
