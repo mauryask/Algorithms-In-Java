@@ -1,8 +1,5 @@
 /*
-** since you might have to remove all the occurance 
-** of the an elemnts in the map if map size exceeds
-** k
-* Time complexity  : O(n * max-frequency)
+* Time complexity  : O(n)
 ** since we are not going to have more than k+1 
 ** elemnts in the map at any time
 * Space complexity : O(k)

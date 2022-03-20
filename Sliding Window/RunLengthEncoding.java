@@ -11,23 +11,34 @@ public class RunLengthEncoding
 {
 	static String encode(String str, int n)
 	{
-		String s = "";
+		 
+		if(str == "")
+			return "";
+		
+		String rslt = "";
 		
 		int i = 0;
-		while(i<n)
+		int j = 0;
+		int count = 0;
+		
+		while(j<n)
 		{
-			char ch = str.charAt(i);
-			int count = 0;
-			while(i < n && str.charAt(i) == ch)
+			if(str.charAt(i) == str.charAt(j))
 			{
 				count++;
-				i++;
+				j++;
 			}
-			
-			s += ch+""+ count;
+			else
+			{
+				rslt += str.charAt(i)+ "" + count;
+				count = 0;
+				i = j;
+			}
 		}
 		
-		return s;
+		rslt += str.charAt(i) + "" + count;
+		
+		return rslt;
 	}
 	
 	public static void main(String [] args)
