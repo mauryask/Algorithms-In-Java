@@ -13,7 +13,6 @@ Two queens will be under attack if:
 -> they are in same row 
 -> same coloumn 
 -> same diagonal
-** T(n) : O((8))
 */
 
 import static java.lang.System.*;
@@ -58,7 +57,7 @@ public class NQueensProblem
 		  if(board[i][j] == 1)
 			  return false;
 		  
-		// checking lower diagonal on the right side  
+		// checking lower diagonal on the left side  
 		for(int i=row,j=col; i<n && j>=0;i++, j--)
 		  if(board[i][j] == 1)
 			  return false;

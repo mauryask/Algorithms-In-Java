@@ -1,6 +1,6 @@
 /*
 * Time complexity  : O(n)
-* Space complexity : O(n)
+* Space complexity : O(k)
 **
 * Note: Works with all the test cases 
 * in leet code
@@ -147,8 +147,8 @@ public class FindSmallestWindow
 	
     public static void main(String [] args)
     {       
-        String s1 = "this is a test string";
-        String s2 = "tist";
+        String s1 = "TOTMTAPTAT";//"this is a test string";
+        String s2 = "ATT";//"tist";
         int m = s1.length();
         int n = s2.length();
         
