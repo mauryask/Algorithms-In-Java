@@ -1,5 +1,5 @@
 /*
-* Time complexity : O(n)
+* Time complexity : O(n*k)
 * Space complexity: O(k)
 *******************
 ** fixed size window
