@@ -1,6 +1,6 @@
 /**
 * How many ways a set can be divided into two such subsets such that
-* diferene between the sum of elements can produce the gievn value(diff)
+* differene between the sum of elements can produce the gievn value(diff)
 */
 
 import static java.lang.System.*;
