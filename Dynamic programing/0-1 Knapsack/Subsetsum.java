@@ -4,16 +4,7 @@
 import static java.lang.System.*;
 
 public class Subsetsum 
-{		
-	public static void main(String [] srga)
-	{
-		int set[] =  {2,3,4,5,7,9};
-		int n = 6;
-		int sum = 9;
-		
-		out.println(topDown(set,n,sum));
-	}
-	
+{			
 	/**
 	* Recursive Approach
 	* Worst Approach
@@ -41,15 +32,12 @@ public class Subsetsum
 	* Space Complexity : O(n * sum)
 	*/	
 	
-	static boolean topDown(int set[], int n, int sum)
+	static boolean bottomUp(int set[], int n, int sum)
 	{
 		boolean dp[][] = new boolean[n+1][sum+1];
 		
 		for(int i=0; i<n+1; i++)
-		{
-			dp[i][0] = true;
-		}
-		
+			dp[i][0] = true;		
 		
 		for(int i=1;i<n+1;i++)
 		{
@@ -91,5 +79,14 @@ public class Subsetsum
 	   }
 	   
 	   out.println(s);
+	}
+	
+	public static void main(String [] srga)
+	{
+		int set[] =  {2,3,4,5,7,9};
+		int n = 6;
+		int sum = 9;
+		
+		out.println(bottomUp(set,n,sum));
 	}
 }
