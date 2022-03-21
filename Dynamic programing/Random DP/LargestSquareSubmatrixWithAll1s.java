@@ -16,23 +16,25 @@ public class LargestSquareSubmatrixWithAll1s
   
   static int largestMatrix2(int grid[][], int m,int n)
   {
-     int maxSize = Integer.MIN_VALUE;
+     int maxSize = 0;
+
      int dp[][] = new int[m][n];
 
      for(int i=m-1; i>=0; i--)
 	 {
 		 for(int j=n-1; j>=0; j--)
-		 {
+		 {   // keep the right most column and bootom most row
+	         // as it is
 			 if(i==m-1 || j==n-1)
 			   dp[i][j] = grid[i][j]; 
-		   
+		    
+			// check if grid value is 1, take it as corner
 			 else if(grid[i][j] == 1)
-			 {
 				dp[i][j] = Math.min(dp[i+1][j+1], Math.min(dp[i+1][j], dp[i][j+1]))+1;
-				
-				maxSize = Math.max(maxSize, dp[i][j]);
-			 }
-		 }
+			
+			// calculate the max size
+             maxSize = Math.max(maxSize, dp[i][j]);
+		}
 	 }		 
 	 
 	 return maxSize;
@@ -49,17 +51,15 @@ public class LargestSquareSubmatrixWithAll1s
 		  for(int j=n-2; j>=0; j--)
 		  {
 			  if(grid[i][j] == 1)
-			  {
-				  grid[i][j] = Math.min(grid[i+1][j+1], Math.min(grid[i][j+1], grid[i+1][j]))+1;
-				  
-				  maxSize = Math.max(maxSize,grid[i][j]);
-			  }
+				  grid[i][j] = Math.min(grid[i+1][j+1], Math.min(grid[i][j+1], grid[i+1][j]))+1;			  
+			  
+			  maxSize = Math.max(maxSize,grid[i][j]);
 		  }
 	  }
 	  
 	  return maxSize;
   }
-	
+  	
 	public static void main(String [] args)
 	{
 		int grid[][] = {{0,1,1,1,1},
@@ -72,7 +72,6 @@ public class LargestSquareSubmatrixWithAll1s
       int n = grid[0].length;
 	  
 	  //out.println(largestMatrix(grid, m, n));
-	  //out.println(largestMatrix2(grid, m, n));
-	  out.println(bruteForce(grid, m, n, m-1, n-1));
+	  out.println(largestMatrix2(grid, m, n));
 	}
 }

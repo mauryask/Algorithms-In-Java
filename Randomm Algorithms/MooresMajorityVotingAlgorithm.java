@@ -7,7 +7,7 @@
 import static java.lang.System.*;
 import java.util.*;
 
-public class MooresVotingAlgorithm 
+public class MooresMajorityVotingAlgorithm
 {
 	static int getMajEle(int[] A, int n)
     {
