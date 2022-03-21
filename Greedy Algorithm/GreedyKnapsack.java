@@ -5,7 +5,7 @@
 * Time complexity  : O(n*logn)
 * Space complexity : O(n)
 */
-0
+
 import static java.lang.System.*;
 import java.util.*;
 
@@ -23,7 +23,7 @@ class ItemValue
 	}
 }
 
-public class GreedyKnapSack
+public class GreedyKnapsack
 {
 	static int maxProfit(int[] profit,int[] weight, 
 	int n, int capacity)
@@ -31,7 +31,7 @@ public class GreedyKnapSack
 		// if no items are knapsack size is zero 
 		// profit will be zero
 		
-		if(m == 0 || n == 0)
+		if(capacity == 0 || n == 0)
 			return 0;
 		
 		ItemValue[]  items = new ItemValue[n];

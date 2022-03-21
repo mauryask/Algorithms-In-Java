@@ -1,14 +1,14 @@
 import java.util.*;
 import static java.lang.System.*;
 
-public class DynamicFibo 
+public class Fibonacci
 {
 	// recursive solution 
 	// T(n) : O(2^n)
 	// S(n) : O(logn)
 	static int recursive(int n)
 	{
-	  if(n<2)
+	  if(n == 0 || n==1)
 		return n;
 	  else
 		return recursive(n-1) + recursive(n-2);
@@ -19,10 +19,10 @@ public class DynamicFibo
 	// S(n) : O(n)		  
 	 static int memoization(int n, int cache[])
 	 {
-		if(n<2)
+		if(n == 0 || n == 1)
 			return cache[n] = n;
 		
-		if(cache[n]!=0)
+		if(cache[n]!=-1)
 			return cache[n];
 		
 		return cache[n] = memoization(n-1, cache) + memoization(n-2, cache);
@@ -64,7 +64,9 @@ public class DynamicFibo
 	{
 		int n = 4;
 		int cache[] =  new int[n+1];
+		Arrays.fill(cache, -1);
 		iterative(n);
-		//out.println(iterative(n));
+		//out.println(recursive(n));
+		//out.println(memoization(n, cache));
 	}	
 }
