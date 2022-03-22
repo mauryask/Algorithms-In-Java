@@ -14,14 +14,6 @@ import static java.lang.System.*;
 
 public class CoinChange2
 {
-	public static void main(String [] args)
-	{
-		int coin[] = {1,2,3,9};
-		int sum = 9;
-		int n = 4;
-		out.println(solve(coin, sum, n));
-	}
-	
 	//this solution is not applicable for every test case (leet code)
 	static int solve(int coin[], int sum, int n)
 	{
@@ -37,7 +29,7 @@ public class CoinChange2
 	}
 	
 	//best solution applicable for each and every test case (leet code)
-	static int topDown(int coin[], int sum, int n)
+	static int bottomUp(int coin[], int sum, int n)
 	{
 		int dp[][] = new int[n+1][sum+1];
 		for(int i=1;i<sum+1; i++) //initialize(infinite is used beacause for comparison)
@@ -57,4 +49,14 @@ public class CoinChange2
 		//important line of code (see leet code)
 		return dp[n][sum] == 2147483646 || dp[n][sum] == 2147483647 ? -1 : dp[n][sum];
 	}
+	
+    public static void main(String [] args)
+	{
+		int coin[] = {1,2,3,9};
+		int sum = 9;
+		int n = 4;
+		out.println(solve(coin, sum, n));
+	}
+	
+	
 }

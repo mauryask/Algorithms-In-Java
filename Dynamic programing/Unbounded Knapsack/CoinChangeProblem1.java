@@ -1,16 +1,7 @@
 import static java.lang.System.*;
 
 public class CoinChangeProblem1
-{
-	public static void main(String [] args)
-	{
-		int coin[] =  {1,2,3};
-		int sum = 5; // 5 Rs. we want
-		int n = 3;
-		
-		out.println(topDown(coin, n, sum));
-	}
-	
+{	
 	static int recursive(int coin[] , int n, int sum)
 	{
 	  if(n == 0 && sum != 0)
@@ -19,12 +10,13 @@ public class CoinChangeProblem1
 		  return 1;
 	  
 	  if(coin[n-1] <= sum)
-		  return recursive(coin, n, sum-coin[n-1])  + recursive(coin, n-1, sum);
+		  return recursive(coin, n, sum-coin[n-1]) 
+	  + recursive(coin, n-1, sum);
 	  else
 		  return recursive(coin, n-1, sum);
 	}
 	
-	static int topDown(int coin[], int n, int sum)
+	static int bottomUp(int coin[], int n, int sum)
 	{
 	   int dp[][] = new int[n+1][sum+1];
        
@@ -43,5 +35,14 @@ public class CoinChangeProblem1
 		}
 		
 		return dp[n][sum];
+	}
+	
+	public static void main(String [] args)
+	{
+		int coin[] =  {1,2,3};
+		int sum = 5; // 5 Rs. we want
+		int n = 3;
+		
+		out.println(bottomUp(coin, n, sum));
 	}
 }

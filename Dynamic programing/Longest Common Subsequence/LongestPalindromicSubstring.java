@@ -60,8 +60,7 @@ public class LongestPalindromicSubstring
 			{
 				if(str.charAt(i-1) == revStr.charAt(j-1))
 				{
-					dp[i][j] = 1 + dp[i-1][j-1];
-					
+					dp[i][j] = 1 + dp[i-1][j-1];					
 					maxLength = Math.max(dp[i][j], maxLength);
 				}
 				else
