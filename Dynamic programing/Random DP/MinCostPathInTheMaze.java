@@ -16,7 +16,8 @@ public class MinCostPathInTheMaze
 			return Integer.MAX_VALUE;
 		if(x==m-1 && y==n-1)
 			return cost[x][y];
-		return cost[x][y]+ Math.min(Math.min(minCost(cost,m,n,x+1,y+1), minCost(cost,m,n,x,y+1)), minCost(cost,m,n,x+1,y));
+		return cost[x][y]+ Math.min(Math.min(minCost(cost,m,n,x+1,y+1)
+		, minCost(cost,m,n,x,y+1)), minCost(cost,m,n,x+1,y));
 	}
 	
 	/*
@@ -49,8 +50,7 @@ public class MinCostPathInTheMaze
 			{
 	           		if(i==m-1 && j==n-1)
 						dp[i][j] = cost[i][j];
-					else if(i==m-1)
-						 
+					else if(i==m-1)						 
 					  dp[i][j] = cost[i][j] + dp[i][j+1];
 				    else if(j==n-1)
 						dp[i][j] = cost[i][j] + dp[i+1][j];
@@ -84,7 +84,8 @@ public class MinCostPathInTheMaze
 				    else if(j==n-1)
 						cost[i][j] += cost[i+1][j];
 					else
-						cost[i][j] = Math.min(Math.min(cost[i+1][j], cost[i][j+1]),cost[i+1][j+1])+cost[i][j];
+						cost[i][j] = Math.min(Math.min(cost[i+1][j],
+					cost[i][j+1]),cost[i+1][j+1])+cost[i][j];
 			}
 		}
 		

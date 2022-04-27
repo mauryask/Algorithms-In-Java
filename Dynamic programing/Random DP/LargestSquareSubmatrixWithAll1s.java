@@ -46,12 +46,13 @@ public class LargestSquareSubmatrixWithAll1s
   {
 	  int maxSize = Integer.MIN_VALUE;
 	  
-	  for(int i=m-2; i>=0; i--)
+	  for(int i=m-1; i>=0; i--)
 	  {
-		  for(int j=n-2; j>=0; j--)
+		  for(int j=n-1; j>=0; j--)
 		  {
-			  if(grid[i][j] == 1)
-				  grid[i][j] = Math.min(grid[i+1][j+1], Math.min(grid[i][j+1], grid[i+1][j]))+1;			  
+			  if(i!=m-1 && j!=n-1 && grid[i][j] == 1)
+				  grid[i][j] = Math.min(grid[i+1][j+1],
+			      Math.min(grid[i][j+1], grid[i+1][j]))+1;			  
 			  
 			  maxSize = Math.max(maxSize,grid[i][j]);
 		  }
