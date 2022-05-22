@@ -8,6 +8,7 @@
 ** hence we can endup checking in same cells 
 ** multiple times 
 */
+
 import static java.lang.System.*;
 import java.util.*;
 
@@ -33,6 +34,7 @@ public class AllPossiblePaths
 			count++;
 			sol[row][col] = 1;
 			printSol();
+			return;
 		}			
 		
         // if it is safe then 
@@ -79,7 +81,7 @@ public class AllPossiblePaths
 	{
 		int maze[][] = {{1,0,1,1},
 			            {1,1,0,1},
-						{0,1,1,0},
+						{0,1,1,1},
 						{1,0,1,1}};
 		int row = 0;
 		int col = 0;
