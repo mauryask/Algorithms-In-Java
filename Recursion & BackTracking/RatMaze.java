@@ -30,6 +30,7 @@ public class RatMaze
 			sol[row][col] = 1;
 			count++;
 			printPath(sol);
+			return;
 		}
 	
 		if(isSafe(maze ,row ,col))
