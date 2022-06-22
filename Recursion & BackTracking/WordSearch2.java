@@ -1,3 +1,8 @@
+/*
+* https://leetcode.com/problems/word-search-ii/
+* T(n) : O()
+* S(n) : O(m*n)
+*/
 import static java.lang.System.*;
 import java.util.*;
 
@@ -5,12 +10,12 @@ public class WordSearch2
 {
 	static class TrieNode 
 	{
-		char ch;
 		int we;
 		String word;
 		TrieNode child[] = new TrieNode[26];
 	}
 	
+	// O(number of words * max word length)
 	static void createTrie(String str, TrieNode root)
 	{
 		for(int i=0; i<str.length(); i++)
@@ -21,7 +26,6 @@ public class WordSearch2
 			else
 			{
 				TrieNode temp = new TrieNode();
-				temp.ch = ch;
 				root.child[ch-'a'] = temp;
 				root = temp;
 			}
@@ -32,8 +36,11 @@ public class WordSearch2
 	}
 	
 	static void solve(char[][] grid, TrieNode root 
-	,int i, int j, int m, int n, List<String> rslt, boolean[][] visited)
-	{	    
+	,int i, int j, int m, int n, List<String> rslt)
+	{	
+        if(!(i<m && i>=0 && j<n && j>=0 && grid[i][j] != '$'))
+		    return;
+    
 		if(root.child[grid[i][j]-'a'] == null)
            return;			
 		
@@ -43,18 +50,15 @@ public class WordSearch2
 			rslt.add(root.word);
 			root.we -= 1;
 		}
-	   
-        if(!(i<m && i>=0 && j<n && j>=0 && !visited[i][j]))
-		    return;
-	   
-	    visited[i][j] = true;
-        
-		solve(grid, root, i-1, j, m, n, rslt, visited);		
-        solve(grid, root, i, j-1, m, n, rslt, visited);		
-        solve(grid, root, i+1, j, m, n, rslt, visited);		
-        solve(grid, root, i, j+1, m, n, rslt, visited);	
-        
-		visited[i][j] = false;		
+	   	   
+
+        char ch = grid[i][j];
+		grid[i][j] = '$';
+		solve(grid, root, i-1, j, m, n, rslt);		
+        solve(grid, root, i, j-1, m, n, rslt);		
+        solve(grid, root, i+1, j, m, n, rslt);		
+        solve(grid, root, i, j+1, m, n, rslt);	
+		grid[i][j] = ch;	
 	}
 	
 	public static void main(String [] args)
@@ -72,14 +76,13 @@ public class WordSearch2
         createTrie(str, root);	   
 	   
 	   List<String> rslt = new ArrayList<>();
-	   boolean[][] visited = new boolean[m][n];
 	   
 	   for(int i=0; i<m; i++)
 	   {
 		   for(int j=0; j<n; j++)
 		   {
-			   if(root.child[grid[i][j]] != null)
-			   	 solve(grid, root, i, j, m, n, rslt, visited);
+			   if(root.child[grid[i][j]-'a'] != null)
+			   	 solve(grid, root, i, j, m, n, rslt);
 		   }
 	   }
 	   
