@@ -1,7 +1,6 @@
 /*
 * https://leetcode.com/problems/word-search-ii/
-* T(n) : O()
-* S(n) : O(m*n)
+* T(n) : O(mxn * mxn)
 */
 import static java.lang.System.*;
 import java.util.*;
