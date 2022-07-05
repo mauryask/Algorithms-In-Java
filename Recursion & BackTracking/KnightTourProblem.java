@@ -7,7 +7,8 @@ import java.util.*;
 
 public class KnightTourProblem 
 {
-	static void printMoves(int[][] board, boolean visited[][], int x, int y, int move, int n)
+	static void printMoves(int[][] board, boolean visited[][],
+	int x, int y, int move, int n)
 	{
 	  	if(isSafe(x, y, n, visited))
 		{
