@@ -25,11 +25,46 @@ public class GeneratingAllPermutationsInArray
 		}
 	}
 	
+	//Generating permutations in case of strings
+	// Anorther approach But not the best
+	static void strPerms(String input, String output)
+	{
+		if(input.length() == 0)
+		{
+			out.println(output);
+			return;
+		}
+		
+		for(int i=0; i<input.length(); i++)
+		{
+			String newInput = subStr(input, i);
+			String newOutput = output + input.charAt(i);
+			strPerms(newInput, newOutput);
+		}
+	}
+	
+	static String subStr(String str, int index)
+	{
+		StringBuilder sb = new StringBuilder();
+		
+		for(int i = 0; i<str.length(); i++)
+		{
+			char ch = str.charAt(i);
+			if(index != i)
+				sb.append(ch);
+		}
+		
+		return  sb.toString();
+	}
+	
 	public static void main(String [] args)
 	{
-		int nums[] = {1,2,3,4};
+		/*int nums[] = {1,2,3,4};
 		boolean[] map = new boolean[nums.length];
 		List<Integer> ds = new ArrayList<>();
-		solve(nums, map, ds);
+		solve(nums, map, ds);*/
+		
+		String input = "RGB";
+	    strPerms(input, "");
 	}
 }
