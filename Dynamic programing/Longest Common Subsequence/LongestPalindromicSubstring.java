@@ -1,6 +1,10 @@
 import static java.lang.System.*;
 import java.util.*;
 
+//This solution is not working for : 'abcdefghijklmnop'
+//like strings where there is no plaindrome of more than 1 length
+//Fix this in next release
+
 public class LongestPalindromicSubstring
 {
 	// Bruteforce solution
