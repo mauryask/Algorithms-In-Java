@@ -5,6 +5,19 @@ import java.util.*;
 //like strings where there is no plaindrome of more than 1 length
 //Fix this in next release
 
+//See below example where Dp fails
+//It gives longest common substring
+// between the string ang reverse of itself
+// not Longest paindromic substring
+
+/*
+Input
+s : "aacabdkacaa"
+Use Testcase
+Output: "aaca"
+Expected : "aca"
+*/
+
 public class LongestPalindromicSubstring
 {
 	// Bruteforce solution
