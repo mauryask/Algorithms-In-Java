@@ -38,13 +38,16 @@ public class PrintMaxValueFromEachSubArray
 			
 			if(j-i+1 == k)
 			{
-				list.add(max.get(0));
+				int maxListHead = max.get(0);
+				
+				list.add(maxListHead);
 				
 				/*
 				* Removing Ai from max if present
 				*/
-				if(!max.isEmpty() && A[i] == max.get(0))
-					max.remove(0);
+				
+				if(max.contains(A[i]))
+					max.remove(A[i]);
 				
 				i++;
 			}
@@ -55,12 +58,72 @@ public class PrintMaxValueFromEachSubArray
 		return list;
 	}
 	
+	
+	//O(n*logk)
+	static void getMax(int[] A, int n, int k)
+	{
+		Queue<Integer> q = new PriorityQueue<>((a, b)->b-a);
+		int i = 0;
+		int j = 0;
+				
+		while(j<n)
+		{
+			q.add(A[j]); //O(log k)
+			
+			if(j-i+1 == k)
+			{
+				int max = q.peek();
+				out.print(max+" ");
+				
+				if(q.contains(A[i])) //log k
+				   q.remove(A[i]); //O(log k)
+			   
+				i++;
+			}
+			
+			j++;
+		}
+	}
+	
+		/*
+	* Eache opration in dequeu takes O(n)
+	* SO T(n) : O(n)
+	* S(n) : O(k) 
+	*/
+	static void usingDeque(int[] A, int n, int k)
+	{
+		Deque<Integer> q = new LinkedList<>();
+		
+		int i = 0;
+		int j = 0;
+		
+		while(j < n)
+		{
+			int item = A[j];
+			
+			while(!q.isEmpty() && q.getLast() <= item)
+				q.removeLast();				
+			
+			q.add(item);
+			
+			if(j-i+1 == k)
+			{
+				int max = q.getFirst();				
+				out.print(max+" ");				
+				if(max == A[i])
+					q.pollFirst();				
+				i++;
+			}			
+			j++;
+		}
+	}
+	
 	public static void main(String [] args)
 	{
 		int A[] = {8, 5, 10, 7, 9, 4, 15, 12, 90, 13};
 		int n = A.length;
 		int k = 3;
 		
-		out.println(findMax(A, n, k));
+		out.println(getMax(A, n, k));
 	}
 }
