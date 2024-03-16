@@ -42,6 +42,7 @@ public class FirstNegativeNumberInEachWindowOfSizeK
 				
 				if(!list.isEmpty() && list.get(0) == A[i])
 				   list.remove(0);
+			   
 				i++;
 			}
 			
