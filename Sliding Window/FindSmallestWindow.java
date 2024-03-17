@@ -31,17 +31,18 @@ public class FindSmallestWindow
         
         while(j<m)
         {
-            char ch = s1.charAt(j);
-            
-            if(map.containsKey(ch))
-            {
-               map.replace(ch, map.get(ch)-1);
-               
-               if(map.get(ch) == 0)
-                   count--;
-               
-               while(count == 0)
-               {
+				char ch = s1.charAt(j);
+				
+				if(map.containsKey(ch))
+				{
+				   map.replace(ch, map.get(ch)-1);
+				   
+				   if(map.get(ch) == 0)
+					   count--;
+				} 
+				
+                while(count == 0)
+                {
                    if(minLength > j-i+1)
                    {
                        minLength = j-i+1;
@@ -62,9 +63,7 @@ public class FindSmallestWindow
                    }
                     
                    i++;
-               }
-            }
-            
+                }
             j++;
         }
 
