@@ -166,6 +166,12 @@ public class CountOcuuranceOfAnagras
 		int k = pattern.length(); // window size
 		int n = str.length();
 		
+		if(n < k)
+		{
+			out.println("anagarms are not possible!!");
+			System.exit(0);
+		}
+		
 		 out.println(anagramCount(str, pattern, n, k));
 		//out.println(bruteForce(str, pattern, n, k));
 	}
