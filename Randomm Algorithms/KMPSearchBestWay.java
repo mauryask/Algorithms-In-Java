@@ -9,6 +9,13 @@ import java.util.*;
 * T(n) : O(m + n)
 * S(n) : O(n)
 */
+
+/*
+* The each value in LPS tells that there is a prefix of length 'value' 
+* which is also a suffix
+* We move back ward in pattern string, the new position indicates 
+* that we already have discovered the previious pattern, no need need to do that again
+*/
 public class KMPSearchBestWay
 {	
 	static int[] getLps(String s2, int n)
