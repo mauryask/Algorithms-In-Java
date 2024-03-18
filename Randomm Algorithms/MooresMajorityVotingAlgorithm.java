@@ -20,6 +20,7 @@ public class MooresMajorityVotingAlgorithm
                count++;
            else
                count--;
+		   
            if(count == 0)
            {
                me = A[i];
@@ -28,6 +29,7 @@ public class MooresMajorityVotingAlgorithm
        }
         
        count  = 0;
+	   
        for(int x : A)
        {
            if(x == me)
@@ -36,6 +38,7 @@ public class MooresMajorityVotingAlgorithm
        
        if(count > n/2)
            return me;
+	   
        return -1;
     }	
     

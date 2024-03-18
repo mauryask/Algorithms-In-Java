@@ -1,7 +1,7 @@
 /*
 * Printing all the subsets of 
 * given String or Array
-* T(n) = O(2*n)
+* T(n) = O(2^n)
 * S(n) = O(1)
 */ 
 
