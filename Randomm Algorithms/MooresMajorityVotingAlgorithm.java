@@ -2,6 +2,8 @@
 * T(n) : O(n)
 * S(n) : O(1)
 ** Majority element
+** At any point the majority element will be coming contiguosly 
+** If it exists that makes its count more
 */
 
 import static java.lang.System.*;

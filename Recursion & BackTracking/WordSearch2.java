@@ -1,6 +1,6 @@
 /*
 * https://leetcode.com/problems/word-search-ii/
-* T(n) : O(mxn * mxn)
+* T(n) : O(m x n x L) : L is length of longest word in the word list
 */
 import static java.lang.System.*;
 import java.util.*;

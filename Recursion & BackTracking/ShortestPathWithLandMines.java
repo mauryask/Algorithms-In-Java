@@ -95,8 +95,10 @@ public class ShortestPathWithLandMines
         { 0, 1, 1, 1, 1, 0, 1, 1, 1, 1 },
         { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
         { 1, 1, 1, 0, 1, 1, 1, 1, 1, 1 } };
+		
 		int m = grid.length;
 		int n = grid[0].length;
+		
 		updateGrid(grid, m, n);
 		
 		for(int x[] : grid)
@@ -105,6 +107,7 @@ public class ShortestPathWithLandMines
 				out.print(y+"         ");
 			out.println("\n");
 		}
+		
 		int dp[][] = new int[m][n];
 		
 		for(int x[] : dp)

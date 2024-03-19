@@ -44,15 +44,11 @@ public class GreedyKnapsack
 	   * profit/weight ratio in descending order
 	   */
 	   
-	    Arrays.sort(items, (a, b)->
-		{
-			return (int)(b.pwRatio-a.pwRatio);
-		});
+	    Arrays.sort(items, (a, b)->(int)(b.pwRatio-a.pwRatio));
 		
 		int totalProfit = 0;
-		int i = 0;
 		
-		for(; i<n; i++)
+		for(int i= 0; i<n; i++)
 		{
 			/*
 			* Check if the bag is still empty
@@ -60,35 +56,21 @@ public class GreedyKnapsack
 			* completely
 			*/
 		
-			if(capacity > 0 && items[i].weight <= capacity)
+			if(items[i].weight <= capacity)
 			{
 				capacity -= items[i].weight;
 				totalProfit += items[i].profit;
 			}
-			/*
-			* If i-th object can not be accomodated
-			* completely break the loop
-			*/
-			else
-				break;
+			else //Take a fraction of the object if can not be kept completely
+			{
+				totalProfit += items[i].pwRatio * capacity;
+				break; //Since remaining space in Knapsack is 0: break
+			}
 		}
-		
-		/*
-		* Check if bag is empty
-		* if yes means only a fraction of i-th object
-		* can be accomodated into it
-		************
-		* Since we already have calculated
-		* the p/w ratio (profit of 1-unit of object)
-		* so profit by puting the fraction in the bag
-		* capacity * pwRatio (for i-th object)
-		*/
-		
-		if(capacity > 0)
-			totalProfit +=  items[i].pwRatio * capacity;			
-		
+				
 		return totalProfit;
 	}
+	
 	
 	public static void main(String [] args)
 	{
