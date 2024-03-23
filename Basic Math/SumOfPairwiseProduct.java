@@ -9,33 +9,27 @@ import java.util.*;
 
 public class SumOfPairwiseProduct
 {
-	static int getSum(int[] A, int n)
+	static int getSum(int n)
 	{
 		int sum = 0;
-		int temp = 0;
 		
-		for(int x : A)
-			sum += x; 
+		for(int i=1; i<=n; i++)
+			sum += i; 
 		
-		temp = sum;
+		int result = 0;
 		
-		int mult = 1;
-		
-		for(int i=1; i<n; i++)
+		for(int i=1; i<=n; i++)
 		{
-			temp = ((temp/mult)-A[i-1])*(i+1);
-			sum += temp;
-			mult = i+1;
+			result += i * sum;
+			sum -= i;
 		}
 		
-		return sum;
+		return result;
 	}
 	
 	public static void main(String [] args)
 	{
-		int A[] = {1,2,3,4,5};
-		// or n = 5 (it will work like same)
-		
-		out.println(getSum(A, A.length));
+		int n = 5;		
+		out.println(getSum(n));
 	}
 }
