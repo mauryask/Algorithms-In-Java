@@ -6,6 +6,7 @@ public class CoinChangeProblem1
 	{
 	  if(n == 0 && sum != 0)
 		  return 0;
+	  
 	  if(sum == 0)
 		  return 1;
 	  

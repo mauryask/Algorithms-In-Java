@@ -4,33 +4,7 @@
 import static java.lang.System.*;
 
 public class Knapsack 
-{
-	static int dp[][] = new int[4][9];
-	public static void main(String [] args)
-	{
-		int wt[] = {2,3,4};
-		int val[] = {12,16,13};
-		int n = 3;
-		int w = 8;
-		
-		/*
-		* Initialization for memoization
-		* initialize each entry with "-1"
-		*/
-		
-		/*
-		for(int i=0; i<n+1; i++)
-		{
-			for(int j=0; j<w+1; j++)
-				dp[i][j] = -1;
-		}
-		*/
-		
-		out.println(recursive(wt, val, w, n));
-		out.println(memoization(wt, val, w, n));
-		out.println(bottomUp(wt, val, w, n));
-	}
-	
+{		
 	/*
 	* Recursive Approach
 	* The worst approach
@@ -59,19 +33,19 @@ public class Knapsack
 	* Space complexity : O(n*w) + size of recursion stack
 	*/
 	
-	static int memoization(int wt[], int val[], int w, int n)
+	static int memoization(int wt[], int val[], int w, int n, int[][] dp)
 	{	
 		if(n==0 || w==0)
 			return 0;
 		
-		if(dp[n][w] != 0) //check if solution already present
+		if(dp[n][w] != -1) //check if solution already present
 			return dp[n][w];
 	    
 		if(wt[n-1] <= w)
-			return dp[n][w] = Math.max(val[n-1]+memoization(wt, val, w-wt[n-1], n-1),
-		                     memoization(wt, val, w, n-1));
+			return dp[n][w] = Math.max(val[n-1]+memoization(wt, val, w-wt[n-1], n-1, dp),
+		                     memoization(wt, val, w, n-1, dp));
 		else 
-			return dp[n][w] =  memoization(wt, val, w, n-1);	
+			return dp[n][w] =  memoization(wt, val, w, n-1, dp);	
 	}
 	
 	/*
@@ -81,13 +55,14 @@ public class Knapsack
 	* Space complexity : O(n*w) 
 	*/
 	
-	static int bottomUp(int wt[], int val[], int w, int n)
+	static int bottomUp(int wt[], int val[], int w, int n, int[][] dp)
 	{
 		//initializzation
-		/*for(int i=0; i<n+1; i++)
+		for(int i=0; i<n+1; i++)
 			dp[i][0] = 0;
+		
 		for(int j=1; j<w+1; j++)
-			dp[0][j] = 0;*/
+			dp[0][j] = 0;
 		
 		for(int i=1; i<n+1; i++) //items
 		{
@@ -102,5 +77,27 @@ public class Knapsack
 		}
 		
 		return dp[n][w];
+	}
+	
+		public static void main(String [] args)
+	{
+		int wt[] = {2,3,4};
+		int val[] = {12,16,13};
+		int n = 3;
+		int w = 8;
+		
+		static int dp[][] = new int[n+1][w+1];
+		/*
+		* Initialization for memoization
+		* initialize each entry with "-1"
+		*/
+		for(int x[] : dp)
+		{
+			Arrays.fill(x, -1);
+		}
+		
+		//out.println(recursive(wt, val, w, n));
+		out.println(memoization(wt, val, w, n, dp));
+		//out.println(bottomUp(wt, val, w, n, dp));
 	}
 } 

@@ -25,14 +25,10 @@ public class FindingFactors
 		for(int i = 1; i<= Math.sqrt(num) ; i++)
 		{
 			if(num % i == 0)
-			{
-				if(num/i == i)
-					out.print(i+" ");
-				else
-				{
+			{			
+				out.print(i+" ");
+				if(i != n/i) 
 					out.print(num/i+" ");
-					out.print(i+" ");
-				}
 			}
 		}
 	}

@@ -33,7 +33,7 @@ public class SieveOfErastothenes
 		// initiallay every entry is marked as false
 		// which indicates every number is prime
 		
-		for(int i = 2; i<Math.sqrt(num) ; i++)
+		for(int i = 2; i<= Math.sqrt(num) ; i++)
 		{
 			if(!prime[i]) // if false (means prime)
 			{

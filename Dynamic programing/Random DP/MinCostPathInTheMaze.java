@@ -26,10 +26,10 @@ public class MinCostPathInTheMaze
 	*/
 	static int topDown(int[][] cost,int[][] dp,int m, int n, int x, int y)
 	{
-		if(x==m || y==m)
-			return dp[x][y] = Integer.MAX_VALUE;
+		if(x==m || y==n)
+			return Integer.MAX_VALUE;
 		if(x==m-1 && y==n-1)
-			return dp[x][y] = cost[x][y];
+			return cost[x][y];
 		
 		if(dp[x][y] != -1)
 			return dp[x][y];

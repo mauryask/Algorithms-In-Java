@@ -16,13 +16,10 @@ public class FindExponentiation
 	{
 		int result =  1;
 		
-		while(true)
+		while(n != 0)
 		{
 			if(n%2 == 1)
 				result *= x;
-			// this line prevents one extra multiplication
-			if(n==0)
-				break;
 			
 			x =  x*x;
 			/*
@@ -34,31 +31,7 @@ public class FindExponentiation
 		
 		return result;
 	}
-	
-	static int myOwnUnderStanding(int x, int n)
-	{
-		int result = 1;
 		
-		while(true)
-		{
-			if(n%2 == 1)
-				result *= x;
-			
-			// if n is odd then n/2 and (n-1)/2 
-			// are going to give the same result
-			n = n/2;
-			
-			// prevents an extra multiplication
-			if(n==0)
-				break;
-			
-			x = x*x;
-		}
-		
-		return result;
-	}
-	
-	
 	static int findExpoRecursive(int x, int n)
 	{
 		if(n==0)
@@ -71,15 +44,13 @@ public class FindExponentiation
 		* Note: n/2 adn (n-1)/2 will give same result
 		* if n is odd
 		*/
-			return x * findExpoRecursive(x*x, (n-1)/2);
+		return x * findExpoRecursive(x*x, (n-1)/2);
 	}
 	
 	public static void main(String args[])
 	{
 		int x = 2;
 		int n = 6;
-		
-		//out.println(findExpo(x, n));
-		out.println(myOwnUnderStanding(x, n));
+		out.println(findExpo(x, n));
 	}
 }

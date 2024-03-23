@@ -75,4 +75,4 @@ public class StiarCaseProblem
 		out.print(recursive(n));
 		//out.println(totalWays(n));
 	}
-}..
+}

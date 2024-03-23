@@ -47,7 +47,7 @@ public class CoinChange2
 		}
 		
 		//important line of code (see leet code)
-		return dp[n][sum] == 2147483646 || dp[n][sum] == 2147483647 ? -1 : dp[n][sum];
+		return dp[n][sum] == 2147483646 ? -1 : dp[n][sum];
 	}
 	
     public static void main(String [] args)

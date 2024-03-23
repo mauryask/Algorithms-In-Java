@@ -24,19 +24,17 @@ public class RatMaze
 	}
 	
 	void mazePathUtil(int maze[][], int row, int col)
-	{
-		if(row == m-1 && col == n-1 && maze[row][col] == 1) 
-		{
-			sol[row][col] = 1;
-			count++;
-			printPath(sol);
-			return;
-		}
-	
+	{	
 		if(isSafe(maze ,row ,col))
 		{
 			sol[row][col] = 1;
 			
+			if(row == m-1 && col == n-1)
+			{
+				printPath(sol);
+				count++;
+				return;
+			}
 			//move down			
 			mazePathUtil(maze ,row+1 ,col);
 			//move right

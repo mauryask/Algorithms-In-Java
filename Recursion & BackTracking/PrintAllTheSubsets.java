@@ -23,6 +23,19 @@ public class PrintAllTheSubsets
 	   printSubset(str, output+str.charAt(start),
 	   start+1, end);
    }
+   
+   	static void printSubsets(String str, int n, String output)
+	{
+		if(n == 0)
+		{
+			out.println(output);
+			return;
+		}
+		
+		printSubsets(str, n-1, str.charAt(n-1) + output);
+		printSubsets(str, n-1, output);
+	}
+	
 
    public static void main(String [] args)
    {
