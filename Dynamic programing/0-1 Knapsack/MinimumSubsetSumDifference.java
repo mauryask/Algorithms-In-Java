@@ -31,7 +31,7 @@ public class MinimumSubsetSumDifference
 		{
 		   // (s2-s1) ** take absolute value because 
 		   // may be s1 > s2 ** then it will give negative value
-		   // s1 + s2 = sum;
+		   // s1 + s2 = sum; 
      	   // s2 - s1 =  sum - 2s1;
 		   
 		   int diff = (int)Math.abs(sum - 2 * valid_sum.get(i) /*s1*/);
