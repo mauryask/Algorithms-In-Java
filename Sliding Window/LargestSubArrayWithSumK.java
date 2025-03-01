@@ -22,8 +22,10 @@ public class LargestSubArrayWithSumK
 		{
 			// cumulative sum
 			sum += A[i]; 
-			
-			// if subarray starts from 0
+						
+			// If the sum so for at current index is equal to k
+			// Then i+1 will be the largest length subarray right
+			// Cause you are doing cum sum from starting index 0 
 			if(sum == k)
 				maxLen = i+1;
 
