@@ -1,5 +1,4 @@
 import static java.lang.System.*;
-import java.util.*;
 
 public class PascalsTriangle 
 {
@@ -13,9 +12,7 @@ public class PascalsTriangle
 		 {
 			 for(int j=0; j<=i; j++)
 			 {
-				 if(j==0) // first column
-					 dp[i][j] = 1;
-				 else if(i==j) // main diagonal
+				 if(j==0 || i == j) // first column and diagonal
 					 dp[i][j] = 1;
 				 else 
 					 dp[i][j] = dp[i-1][j-1] + dp[i-1][j];
@@ -43,9 +40,9 @@ public class PascalsTriangle
 	
 	static int fact(int n)
 	{
-		if(n==0 || n==1)
+		if(n <= 1)
 			return 1;
-		return n*fact(n-1);
+		return n * fact(n-1);
 	}
 	
 	public static void main(String [] args)
