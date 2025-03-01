@@ -5,38 +5,39 @@ import static java.lang.System.*;
 import java.util.*;
 
 public class LongestIncreasingSubsequence {
-   // T(n) : O(n^2)
-   // S(n) : O(n)
+    // T(n) : O(n^2)
+    // S(n) : O(n)
+
     static int[] findLISLengthAndIndex(int[] A, int n, int[] dp) {
-        int max = 0;
+        int maxLength = 0;
         int maxIndex = 0;
 
         for (int i = 0; i < n; i++) {
-            int tempMax = 0;
+            int max = 0;
 
             for (int j = 0; j < i; j++) {
                 if (A[j] < A[i]) {
-                    if (tempMax < dp[j]) {
-                        tempMax = dp[j];
+                    if (max < dp[j]) {
+                        max = dp[j];
                     }
                 }
             }
 
-            dp[i] = tempMax + 1;
+            dp[i] = max + 1;
 
-            if (max < dp[i]) {
-                max = dp[i];
+            if (maxLength < dp[i]) {
+                maxLength = dp[i];
                 maxIndex = i;
             }
         }
 
-        return new int[]{max, maxIndex};
+        return new int[]{maxLength, maxIndex};
     }
-    
-    //T(n) : O(Number of LIS * Length of LIS)
+
+    //T(n) : 𝑂(Number of LIS × 𝑛2)
     static void printLIS(int[] A, int length, int index, int[] dp, List<Integer> list) {
         list.add(0, A[index]);
-  
+
         if (length == 1 || index == 0) {
             out.println(list);
             return;
@@ -50,12 +51,46 @@ public class LongestIncreasingSubsequence {
             }
         }
     }
+    
+    // https://www.geeksforgeeks.org/construction-of-longest-increasing-subsequence-using-dynamic-programming/
+    static void printTingLexicoGraphicallySmallestIndexLIS
+    (int[] A, int length, int index, List<Integer> list, int[] dp) {
+        list.add(0, A[index]);
+
+        if (length == 1 || index == 0) {
+            out.println(list);
+            return;
+        }
+
+        int minIndex = index;
+
+        for (int i = index - 1; i >= 0; i--) {
+            if(dp[i] == length - 1 && i < minIndex && A[i] < A[index]){
+                minIndex = i;
+            }
+        }        
+
+        printTingLexicoGraphicallySmallestIndexLIS(A, length - 1, minIndex, list, dp);
+    }
 
     public static void main(String[] arg) {
-        int[] A = {10, 22, 42, 33, 21, 50, 41, 60, 80, 3};
+        // int[] A = {10, 22, 42, 33, 21, 50, 41, 60, 80, 3};
+        // In this example we are going to have two LIS 
+        // One ends at 80 and one ends at 79
+        int[] A = {10, 22, 42, 33, 21, 50, 41, 60, 80, 79};
         int n = A.length;
         int[] dp = new int[n];
         int[] lisInfo = findLISLengthAndIndex(A, n, dp);
-        printLIS(A, lisInfo[0], lisInfo[1], dp, new ArrayList<>());
+        int lisLength = lisInfo[0];
+        int lisIndex = lisInfo[1]; //This holds the firts index (i.e. ending at 80)
+        // Printing LIS ending at all the indices
+        // Since all the LIS going to be after first LIS index so taking it as starting index
+        // for (int i = lisIndex; i < n; i++) {
+        //     if (dp[i] == lisLength) {
+        //         printLIS(A, lisLength, i, dp, new ArrayList<>());
+        //     }
+        // }
+
+        printTingLexicoGraphicallySmallestIndexLIS(A, lisLength, lisIndex, new ArrayList<>(), dp);
     }
 }
