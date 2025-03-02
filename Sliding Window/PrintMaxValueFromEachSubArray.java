@@ -83,7 +83,7 @@ public class PrintMaxValueFromEachSubArray
 		{
 			int item = A[j];
 			
-			while(!q.isEmpty() && q.getLast() <= item)
+			while(!q.isEmpty() && q.getLast() < item)
 				q.removeLast();				
 			
 			q.add(item);

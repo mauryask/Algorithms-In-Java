@@ -5,47 +5,35 @@
 https://www.geeksforgeeks.org/run-length-encoding/
 */
 import static java.lang.System.*;
-import java.util.*;
 
 public class RunLengthEncoding
 {
-	static String encode(String str, int n)
-	{
-		 
-		if(str == "")
-			return "";
-		
-		String rslt = "";
-		
-		int i = 0;
-		int j = 0;
-		int count = 0;
-		
-		while(j<n)
-		{
-			if(str.charAt(i) == str.charAt(j))
-			{
-				count++;
-				j++;
-			}
-			else
-			{
-				rslt += str.charAt(i)+ "" + count;
-				count = 0;
-				i = j;
-			}
-		}
-		
-		rslt += str.charAt(i) + "" + count;
-		
-		return rslt;
-	}
+    static String encode(String s) {
+        int n = s.length();
+        
+        if(n == 0) return "";
+        if(n == 1) return s + "" + 1;
+        
+        StringBuilder sb  = new StringBuilder();
+        int count = 1;
+        
+        for(int i=1; i<n; i++){
+            if(s.charAt(i-1) == s.charAt(i))
+              count++;
+            else{
+              sb.append(s.charAt(i-1)).append(count);
+              count = 1;
+            }  
+        }
+        
+        sb.append(s.charAt(n-1)).append(count);
+        
+        return sb.toString();
+    }
 	
 	public static void main(String [] args)
 	{
-		String str = "wwwwaaadexxxxxx";
-		int n = str.length();
-		
-		out.println(encode(str, n));
+		String str = "wwwwaaadexxxxxx";		
+		out.println(encode(str));
 	}
 }
