@@ -4,38 +4,32 @@
 ****************
 * Sliding window
 ** https://www.geeksforgeeks.org/equilibrium-index-of-an-array/
-*/
+ */
 import static java.lang.System.*;
-import java.util.*;
 
-public class FindEquilibriumPoint 
-{
-	static int equilibriumPoint(int[] A, int n)
-	{
-		   int s1 = 0;	
-		   int s2  = 0;
-		   
-		  for(int x : A)
-			s2 += x;
-		
-		 for(int i = 0; i<n; i++)
-		 {
-			if(i != 0)
-				s1 += A[i-1];
-			s2 -= A[i];
-           
-            if(s1 == s2)
-              return i;				
-		 }
-	}
-		 
-		 return -1;
-	}
-	
-	public static void main(String [] args)
-	{
-		int A[] = {-7, 1, 5, 2, -4, 3, 0};
-		int n = A.length;
-		out.println(equilibriumPoint(A, n));
-	}
+public class FindEquilibriumPoint {
+
+    static int findEquilibrium(int arr[]) {
+        int sum = 0; // Overall sum of the array
+        int start = 0; // Starting sum
+
+        for (int x : arr) {
+            sum += x;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+			// Check if strating sum == end sum
+            if (start == (sum - start - arr[i])) {
+                return i;
+            }
+            start += arr[i];
+        }
+
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int A[] = {-7, 1, 5, 2, -4, 3, 0};
+        out.println(findEquilibrium(A));
+    }
 }
