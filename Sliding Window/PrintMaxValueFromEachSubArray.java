@@ -10,53 +10,35 @@ import java.util.*;
 
 public class PrintMaxValueFromEachSubArray
 {
-	static List<Integer> findMax(int A[], int n, int k)
-	{
-		List<Integer> list = new LinkedList<>();
-		List<Integer> max = new LinkedList<>();
-		
-		int i=0, j=0;
-		
-		while(j<n)
-		{
-			/*
-			* In order to use local variable 
-			* inside the lamda expression 
-			* it shouold be final
-			*/
-			
-			/*
-			* Before adding the 'temp' to the list
-			* remove all the elements from the list
-			* that are less than the 'temp'
-			*/
-			
-			final int temp = A[j];
-			max.removeIf(x->(x<=temp));
-				
-			max.add(temp);
-			
-			if(j-i+1 == k)
-			{
-				int maxListHead = max.get(0);
-				
-				list.add(maxListHead);
-				
-				/*
-				* Removing Ai from max if present
-				*/
-				
-				if(max.contains(A[i]))
-					max.remove(A[i]);
-				
-				i++;
-			}
-			
-			j++;
-		}
-		
-		return list;
-	}
+	static ArrayList<Integer> maxOfSubarrays(int arr[], int k) {
+      List<Integer> list = new ArrayList<>();
+      ArrayList<Integer> ans = new ArrayList<>();
+      int i = 0, j = 0;
+      int n = arr.length;
+        
+      while(j < n)
+      {
+        int x = arr[j];
+		// Do niot use here ele <= x (remove only elements that are less than x)
+		// Not that are greater or equal
+		// Else the teste case like {8 5 5 5 1 2 3} and k = 3
+		// Will not work
+        list.removeIf(ele -> ele < x);
+        list.add(x);
+        
+        if(j - i + 1 == k){
+            ans.add(list.get(0));
+            
+            if(arr[i] == list.get(0))
+              list.remove(0);
+            i++;  
+        }
+        
+        j++;
+      }    
+        
+      return ans;    
+    }
 	
 	
 	//O(n*logk)
@@ -121,9 +103,7 @@ public class PrintMaxValueFromEachSubArray
 	public static void main(String [] args)
 	{
 		int A[] = {8, 5, 10, 7, 9, 4, 15, 12, 90, 13};
-		int n = A.length;
-		int k = 3;
-		
-		out.println(getMax(A, n, k));
+		int k = 3;		
+		out.println(maxOfSubarrays(A, k));
 	}
 }
