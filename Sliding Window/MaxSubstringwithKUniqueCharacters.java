@@ -6,72 +6,53 @@
 ***************
 ** https://www.geeksforgeeks.org/find-the-longest-substring-with-k-unique-characters-in-a-given-string/
 ** Variable size window
-*/
+ */
 
 import static java.lang.System.*;
 import java.util.*;
 
-public class MaxSubstringwithKUniqueCharacters
-{
-	static int maxSubString(String str, int n, int k)
-	{
-	   int i =0, j=0;
-	   int maxLen = 0;
-	   
-	   Map<Character, Integer> map = new HashMap<>();
-	   
-	   while(j<n)
-	   {
-		   char ch = str.charAt(j);
-		   
-		   /*
-		   * put each character in the map
-		   * if character is alrady present 
-		   * increase its frequency of the chaacter
-		   */
-		   
-		   map.put(ch, map.getOrDefault(ch, 0)+1);
-		   
-		   /*
-		   * Check the size of the map if it is 'k' 
-		   * it means three unique 
-		   * charcaters are there in the map
-		   */
-		   
-		   if(map.size() == k)
-			  maxLen =  Math.max(maxLen, j-i+1);
-		  /*
-		  * If size > 'k'  remove charcater from 
-		  * which is at ith index in the string
-		  * and increment i
-		  ******************
-		  * At the same time check if frequency of caharacter
-		  * is 0 remove it, other wise it will give 
-		  * incorrect number of unique characters 
-		  * in a particular window
-		  */
-		  
-		  while(map.size() > k)
-		  {
-		  		ch =  str.charAt(i);
-				map.replace(ch, map.get(ch)-1);
-				if(map.get(ch) == 0)
-					map.remove(ch);
-				i++;
-		  }
-		  
-		  j++;
-	   }	
+public class MaxSubstringwithKUniqueCharacters {
 
-		return maxLen;	   
-	}
-	
-	public static void main(String [] args)
-	{
-		String str =  "aabacbebebe";
-		int n = str.length();
-		int k = 3;
-		
-		out.println(maxSubString(str, n, k));
-	}
+    static int longestkSubstr(String s, int k) {
+        int max = Integer.MIN_VALUE;
+        Map<Character, Integer> map = new HashMap<>();
+        int i = 0, j = 0;
+        int n = s.length();
+
+        while (j < n) {
+            char ch = s.charAt(j);
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+            // Once the map size hits the k size get the max length
+            if (map.size() == k) {
+                max = Math.max(max, j - i + 1); 
+            }else if (map.size() > k) { // If map size exceeds k 
+                while (map.size() > k) {
+                    ch = s.charAt(i);
+
+                    if (map.containsKey(ch)) {
+                        int value = map.get(ch);
+						// If on substracting 1 the frequency of ch becomes 0
+						// Rmove it						
+                        if (value - 1 == 0) { 
+                            map.remove(ch); 
+                        }else {
+                            map.put(ch, value - 1);
+                        }
+                    }
+
+                    i++;
+                }
+            }
+
+            j++;
+        }
+
+        return max == Integer.MIN_VALUE ? -1 : max;
+    }
+
+    public static void main(String[] args) {
+        String str = "aabacbebebe";
+        int k = 3;
+        out.println(longestkSubstr(str, k));
+    }
 }
