@@ -10,7 +10,7 @@ import java.util.*;
 public class FirstNegativeNumberInEachWindowOfSizeK {
 
     static List<Integer> firstNegativeInteger(int arr[], int k) {
-        List<Integer> list = new ArrayList<>();
+        Queue<Integer> q = new ArrayDeque<>();
         List<Integer> ans = new ArrayList<>();
 
         int n = arr.length;
@@ -19,17 +19,17 @@ public class FirstNegativeNumberInEachWindowOfSizeK {
 
         while (j < n) {
             if (arr[j] < 0) {
-                list.add(arr[j]);
+                q.add(arr[j]);
             }
 
             if (j - i + 1 == k) {
 				// Once window size is hit
 				// Get the first element from list
-                if (!list.isEmpty()) {
-                    ans.add(list.get(0));
+                if (!q.isEmpty()) {
+                    ans.add(q.peek());
 
-                    if (arr[i] == list.get(0)) {
-                        list.remove(0);
+                    if (arr[i] == q.peek()) {
+                        q.remove();
                     }
                 } else { //If no newgative element in a window add 0 to ans list
                     ans.add(0);
@@ -72,10 +72,11 @@ public class FirstNegativeNumberInEachWindowOfSizeK {
     }
 
     public static void main(String[] args) {
-        int A[] = {12, -1, -7, 8, -15, 30, 16, 28};
-        int k = 3; // window size
+        // int A[] = {12, -1, -7, 8, -15, 30, 16, 28};
+        int[] A = {-8, 2, 3, -6, 10};
+        int k = 2; // window size
 
-        firstNegativeInteger(A, k);
+        out.println(firstNegativeInteger(A, k));
         //bruteForce(A, n, k);
     }
 }
