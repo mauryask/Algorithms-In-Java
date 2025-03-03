@@ -18,7 +18,7 @@ As the result index "pivot" will contain
 So compare (pivot+1) with k
 ** if  (pivot+1) = k this is the kth element
 ** if  (pivot+1) < k element will be in right subarray
-** if (pivot+1) > k element will be in left subarray
+** if  (pivot+1) > k element will be in left subarray
 *** as all the elements to left of pivot are less or equal 
 *** and to right are greater 
 */

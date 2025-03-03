@@ -4,10 +4,10 @@
 * Bottom-up dp
 */
 
-import java.util.*;
 import static java.lang.System.*;
+import java.util.*;
 
-public class Test
+public class WordBreak
 {		
 	static boolean wordBreak(String str, Set<String> set)
 	{

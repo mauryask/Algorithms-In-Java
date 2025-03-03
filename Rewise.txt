@@ -1,0 +1,15 @@
+1) Expression tree
+2) Deletion in BST 
+3) Find sum of subtree which is also a BST 
+4) Recover BST (Two nodes swapped)
+5) Flatten binary tree to linked list
+6) Max sum between any two nodes 
+7) Max sum between any two leaf nodes 
+8) Check if two nodes are cousins
+9) Print all the k-sum paths
+10) Print the bounday nodes
+11) Target sum problem (DP)
+12) Dijkstra in 2D grid
+13) Travelling sales man problem
+14) Happy number
+15) Word break problem

@@ -8,7 +8,6 @@ https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
 */
 
 import static java.lang.System.*;
-import java.util.*;
 
 public class KadensAlgorithm
 {	
@@ -24,8 +23,8 @@ public class KadensAlgorithm
 		* of largest sum subarray
 		*/
 		
-         int maxSum = A[0];
-         int sum = A[0];
+         int maxSum = 0;
+         int sum = 0;
          int temp = 0; 
 		 int start = 0;
 		 int end = 0;
@@ -42,7 +41,7 @@ public class KadensAlgorithm
 			* instead it will start a new sum (see else part)
 			*/
 		
-        for(int i=1; i<n; i++)
+        for(int i=0; i<n; i++)
         {
             if(sum + A[i] > A[i])
                 sum += A[i];
