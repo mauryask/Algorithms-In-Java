@@ -3,7 +3,6 @@
 * S(n) : O(n*n)
 */
 import static java.lang.System.*;
-import java.util.*;
 
 public class KnightTourProblem 
 {

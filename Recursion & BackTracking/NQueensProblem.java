@@ -16,7 +16,6 @@ Two queens will be under attack if:
 */
 
 import static java.lang.System.*;
-import java.util.*;
 
 public class NQueensProblem
 {

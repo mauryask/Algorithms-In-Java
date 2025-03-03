@@ -1,4 +1,4 @@
-
+// This is same as printing all the combinations and printing all the subsets
 public class GenerateAllTheSubSequencsOfAString {
     static int count = 0;
 
