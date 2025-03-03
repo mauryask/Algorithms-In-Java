@@ -25,7 +25,7 @@ public class GeneratingAllPermutationsInArray
 		}
 	}
 	
-	//Generating permutations in case of strings
+	// Generating permutations in case of strings
 	// Anorther approach But not the best
 	static void strPerms(String input, String output)
 	{
