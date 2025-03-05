@@ -1,6 +1,6 @@
 /*
-* Time complexity  : O(n)
-* Space complexity : O(k)
+* Time complexity  : O(m + n)
+* Space complexity : O(n)
 **
 * Note: Works with all the test cases 
 * in leet code
