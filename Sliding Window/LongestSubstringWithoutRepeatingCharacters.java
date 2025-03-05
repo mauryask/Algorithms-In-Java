@@ -49,6 +49,7 @@ public class LongestSubstringWithoutRepeatingCharacters
 			  * until all the characters in the window
 			  * are unique thats what we wanted
 			  */
+			  //this runs only for repeated charter not always hence: overall time complexity is going to be O(n)
 				  while(map.size() < j-i+1)
 				  {
 					ch =  str.charAt(i);
@@ -62,6 +63,37 @@ public class LongestSubstringWithoutRepeatingCharacters
 		
 		return maxLen;
 	}
+	
+	// Best approach 
+	// T(n) : O(n)
+	// S(n) : O(n)
+
+	sttaic int longestUniqueSubstr(String s) {
+       int n = s.length();
+       int i = 0;
+       int max = 0;
+       HashMap<Character, Integer> map = new HashMap<>();
+       
+       for(int j=0; j<n; j++){
+           char ch = s.charAt(j);
+           
+		   // Skip the first occurance of the duplicate character
+           if(map.containsKey(ch)){
+			   // We are taking max here of the below two
+			   // Casuse the i might already be ahead of the duplicate character encountered
+			   // For example in 'geeksforgeeks' this particular example 
+			   // When i points to second 'e' and later duplicate charcater 'g'
+               // encountred then taking only max.get(ch) + 1 will give incorrect result as i is already ahead of this
+               i = Math.max(i, map.get(ch) + 1);
+           }
+           
+		   // Put the indnx of the characters
+           map.put(ch, j);
+           max = Math.max(max, j-i+1);
+       } 
+       
+       return max;
+    }
 	
 	/*
 	* T(n) : O(n*n)
