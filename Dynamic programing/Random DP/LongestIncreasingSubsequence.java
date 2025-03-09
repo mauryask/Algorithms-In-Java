@@ -12,33 +12,34 @@ public class LongestIncreasingSubsequence {
         int maxLength = 0;
         int maxIndex = 0;
 
-        for (int i = 0; i < n; i++) {
-            int max = 0;
-
-            for (int j = 0; j < i; j++) {
-                if (A[j] < A[i]) {
-                    if (max < dp[j]) {
-                        max = dp[j];
-                    }
-                }
-            }
-
-            dp[i] = max + 1;
-
-            if (maxLength < dp[i]) {
-                maxLength = dp[i];
-                maxIndex = i;
-            }
+        // Bsae case
+        // if(n <= 1)
+         // return n;
+       
+        int len[] =  new int[n];
+        Arrays.fill(len, 1);
+               
+        for(int i=1; i<n; i++){
+           for(int j=0; j<i; j++){
+               if(arr[i] > arr[j] && len[i] < len[j] + 1){
+                   len[i] = len[j] + 1;
+               }
+              
+			  if(maxLength < len[i]){
+				 maxLength = len[i];
+				 maxIndex = i;
+			  }
+           }
         }
-
+               
         return new int[]{maxLength, maxIndex};
     }
 
-    //T(n) : 𝑂(Number of LIS × 𝑛2)
+    //T(n) : 𝑂(Number of LIS × 𝑛2)
     static void printLIS(int[] A, int length, int index, int[] dp, List<Integer> list) {
         list.add(0, A[index]);
 
-        if (length == 1 || index == 0) {
+        if (length == 1) {
             out.println(list);
             return;
         }
