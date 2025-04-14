@@ -1,5 +1,5 @@
 /*
-* T(n): O(sqrt(n))
+* T(n): O(n + sqrt(n))
 * S(n): O(sqrt(n))
 */
 import java.util.*;
@@ -7,41 +7,51 @@ import static java.lang.System.*;
 
 public class RangeSumQuery 
 {	 
-	int sol[];
-    int len;
+ int[] nums;
+    int blockSize;
+	int[] blocks;
 	
-    RangeSumQuery(int n)
+    RangeSumQuery(int[] nums)
 	{	    		
-		len = (int)Math.sqrt(n);		
-		sol = new int[len+1];
+		this.nums = nums;
+		int n = nums.length;
+		blockSize = (int)Math.sqrt(n);
+		// If number of blocks perfectly divisible by blockSize then the number of blocks should be n / blockSize
+		// Else if nbumber of blocks should be (n / blockSize + 1) => +1 to accomodate the rest of the elements that 
+		// will not come in the compete chunk of sqrt(n) size
+		
+		// Another work around here is use blow 
+		// numBlocks = (n + blockSize - 1) / blockSize => this does the same thing as below
+		int numBlocks = (n % blockSize == 0) ? (n / blockSize) : (n / blockSize + 1);
+		blocks = new int[numBlocks];
 	}	
      
 	//Precomputing the sum for each sqrt(n) size block 
-	private void compute(int[] A, int n)
+	private void compute(int[] nums)
 	{
-		for(int i=0; i<n; i++)
-		  sol[i/len] += A[i];		
+		for(int i=0; i<nums.length; i++)
+		  blocks[i/blockSize] += nums[i];		
 	}	
 
-    private int getSum(int A[], int l, int r)
+    private int getSum(int nums[], int left, int right)
 	{
 		int sum = 0;
 		
-        for(int i=l; i<=r;)
+        while(left <= right)
 		{
 			/*
-			* i%len == 0 : Indicates that it is the starting of some block
-			* i+len-1 <= r: Indicates that the block is within the range of 'r'
+			* left % blockSize == 0 : Indicates that it is the starting of some block
+			* left + blockSize - 1 <= right: Indicates that the block is within the range of 'right'
  			*/
-			if(i%len == 0 && i+len-1 <= r)
+			if(left % blockSize == 0 && left + blockSize - 1 <= right)
 			{
-				sum += sol[i/len]; // Add the precomputed answer
-				i += len; //Move to next bock dircetly
+				sum += blocks[left / blockSize]; // Add the precomputed answer
+				left += blockSize; //Move to next bock dircetly
 			}
 			else //Handling partially overlaping bocks
 			{
-				sum += A[i];
-				i++;
+				sum += nums[left];
+				left++;
 			}
 		}
 
@@ -50,10 +60,10 @@ public class RangeSumQuery
 
 	public static void main(String [] args)
 	{
-		int A[] = {10,2,5,8,9,6,3,5,7,8,9,5,4,1,2,5,6};		
-		RangeSumQuery rq = new RangeSumQuery(A.length);
-		rq.compute(A, A.length);
-		out.println(rq.getSum(A, 5, 14));		
+		int nums[] = {10,2,5,8,9,6,3,5,7,8,9,5,4,1,2,5,6};		
+		RangeSumQuery rq = new RangeSumQuery(nums);
+		rq.compute(nums);
+		out.println(rq.getSum(nums, 5, 14));		
 	}
 }
 
