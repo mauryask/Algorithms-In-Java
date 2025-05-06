@@ -13,6 +13,7 @@ public class SegmentTree
 {
 	int[] seg;
 	int[] arr;
+	int n;
 	
 	SegmentTree(int[] arr){
 		seg = new int[4 * arr.length];
@@ -54,6 +55,9 @@ public class SegmentTree
     void update(int index, int start, int end, int valueIndex, int value){
 		// Go to leaf node reprsenting the valueIndex, Store the new vaue over there
 		if(start == end){
+			// Here update the original array as well
+			// start == end = valueIndex
+			arr[start] = value;
 			seg[index] = value;
 			return;
 		}
@@ -74,9 +78,8 @@ public class SegmentTree
 		SegmentTree st = new SegmentTree(arr);
 		st.buildTree(0, 0, arr.length - 1);
 		int maxValue = st.getMax(0, 0, arr.length - 1, 0, 5);
-		out.println(maxValue);
-		arr[2] = 25;
-		st.update(0, 0, arr.length - 1, 2, 25);
+		out.println(maxValue);		
+		st.update(0, 0, arr.length-1, 2, 25);
 		maxValue = st.getMax(0, 0, arr.length - 1, 0, 5);
 		out.println(maxValue);		
 	}
