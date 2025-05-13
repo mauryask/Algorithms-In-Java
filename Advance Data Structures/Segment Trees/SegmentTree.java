@@ -37,6 +37,11 @@ public class SegmentTree
  	// Here we are checking if the range reprsented by a node is 
 	// Completly inside, Comletely outside or Overlapping 
 	int getMax(int index, int start, int end, int left, int right){
+		//Handle invalid range
+		if(left > right){
+			return Integer.MIN_VALUE;
+		}
+		
 		// Completely inside
 		if(left <= start && end <= right)
 			return seg[index];	
@@ -53,6 +58,10 @@ public class SegmentTree
 	}
     
     void update(int index, int start, int end, int valueIndex, int value){
+		if(valueIndex >= arr.length){
+		   return;	
+		}
+		
 		// Go to leaf node reprsenting the valueIndex, Store the new vaue over there
 		if(start == end){
 			// Here update the original array as well

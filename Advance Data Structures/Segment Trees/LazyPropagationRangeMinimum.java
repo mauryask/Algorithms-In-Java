@@ -32,8 +32,13 @@ public class LazyPropagationRangeMinimum {
         seg[index] = Math.min(seg[2 * index + 1], seg[2 * index + 2]);
     }
 
+    //Lazy propgation
     void rangeUpdate(int index, int start, int end, int left, int right, int delta) {
-        // Apply pending lazy updates
+        if(left > right){
+		  return;	
+		}
+		
+		// Apply pending lazy updates
         if (lazy[index] != 0) {
             seg[index] += lazy[index];
             if (start != end) {
@@ -66,6 +71,11 @@ public class LazyPropagationRangeMinimum {
     }
 
     int getMin(int index, int start, int end, int left, int right) {
+		//Handle invalid range
+		if(left > right){
+		   return Integer.MAX_VALUE;	
+		}
+		
         // Apply pending lazy updates
         if (lazy[index] != 0) {
             seg[index] += lazy[index];
