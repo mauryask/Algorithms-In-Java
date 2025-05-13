@@ -56,7 +56,7 @@ public class SegmentTree
 		// Go to leaf node reprsenting the valueIndex, Store the new vaue over there
 		if(start == end){
 			// Here update the original array as well
-			// start == end = valueIndex
+			// start = end = valueIndex
 			arr[start] = value;
 			seg[index] = value;
 			return;
