@@ -3,31 +3,30 @@ import java.util.*;
 
 public class GeneratingAllPermutationsInArray 
 {
-	// Appraoch that uses extra space
-	static void solve(int[] nums, boolean map[], List<Integer> ds)
+	// Appraoch-01: With extra space
+	static void printAllPermutations(int[] A, boolean map[], Stack<Integer> stack)
 	{
-		if(ds.size() == nums.length)
+		if(stack.size() == A.length)
 		{
-			out.println(ds);
+			out.println(stack);
 			return;
 		}
 		
-		for(int i=0; i<nums.length; i++)
+		for(int i=0; i<A.length; i++)
 		{
 			if(!map[i])
 			{
 				map[i] = true;
-				ds.add(nums[i]);
-				solve(nums, map, ds);
+				stack.push(A[i]);
+				printAllPermutations(A, map, stack);
 				map[i] = false;
-				ds.remove(ds.size()-1);
+				stack.pop();
 			}
 		}
 	}
 	
-	// Generating permutations in case of strings
-	// Anorther approach But not the best
-	static void strPerms(String input, String output)
+	// Approach-02: In case of strings
+	static void printAllPermutations2(String input, String output)
 	{
 		if(input.length() == 0)
 		{
@@ -39,32 +38,53 @@ public class GeneratingAllPermutationsInArray
 		{
 			String newInput = subStr(input, i);
 			String newOutput = output + input.charAt(i);
-			strPerms(newInput, newOutput);
+			printAllPermutations2(newInput, newOutput);
 		}
 	}
 	
 	static String subStr(String str, int index)
 	{
-		StringBuilder sb = new StringBuilder();
-		
+		StringBuilder sb = new StringBuilder();		
 		for(int i = 0; i<str.length(); i++)
 		{
 			char ch = str.charAt(i);
 			if(index != i)
 				sb.append(ch);
+		}		
+		return  sb.toString();
+	}
+	
+	//Approach-03: Without extra space
+	static void printAllPermutations3(int[] A, int index){
+		if(index == A.length){
+			for(int x : A){
+				out.print(x);
+			}
+			out.println();
+			return;
 		}
 		
-		return  sb.toString();
+		for(int i=index; i<A.length; i++){
+			swap(A, i, index);
+			printAllPermutations3(A, index+1);
+			swap(A, i, index);
+		}
+	}
+	
+	static void swap(int[] A, int i, int index){
+		int temp = A[index];
+		A[index] = A[i];
+		A[i] = temp;
 	}
 	
 	public static void main(String [] args)
 	{
-		/*int nums[] = {1,2,3,4};
-		boolean[] map = new boolean[nums.length];
-		List<Integer> ds = new ArrayList<>();
-		solve(nums, map, ds);*/
-		
-		String input = "RGB";
-	    strPerms(input, "");
+		int A[] = {1,2,3};
+		boolean[] map = new boolean[A.length];
+		Stack<Integer> stack = new Stack<>();
+		printAllPermutations(A, map, stack);		
+		// printAllPermutations3(A, 0);		
+		// String input = "RGB";
+	    // printAllPermutations2(input, "");
 	}
 }
