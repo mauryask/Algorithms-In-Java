@@ -1,14 +1,16 @@
+// T(n): O(n!)
+
 import static java.lang.System.*;
 import java.util.*;
 
 public class GeneratingAllPermutationsInArray 
 {
-	// Appraoch-01: With extra space
-	static void printAllPermutations(int[] A, boolean map[], Stack<Integer> stack)
+	// Appraoch-01: With extra space (It gives permutations sorted in lexicographical order)
+	static void printAllPermutations(int[] A, boolean map[], List<Integer> list)
 	{
-		if(stack.size() == A.length)
+		if(list.size() == A.length)
 		{
-			out.println(stack);
+			out.println(list);
 			return;
 		}
 		
@@ -17,15 +19,15 @@ public class GeneratingAllPermutationsInArray
 			if(!map[i])
 			{
 				map[i] = true;
-				stack.push(A[i]);
-				printAllPermutations(A, map, stack);
+				list.add(A[i]);
+				printAllPermutations(A, map, list);
 				map[i] = false;
-				stack.pop();
+				list.remove(list.size()-1);
 			}
 		}
 	}
 	
-	// Approach-02: In case of strings
+	// Approach-02: In case of strings (It gives permutations not sorted in lexicographical order)
 	static void printAllPermutations2(String input, String output)
 	{
 		if(input.length() == 0)
@@ -54,7 +56,7 @@ public class GeneratingAllPermutationsInArray
 		return  sb.toString();
 	}
 	
-	//Approach-03: Without extra space
+	//Approach-03: Without extra space (It gives permutations sorted in lexicographical order)
 	static void printAllPermutations3(int[] A, int index){
 		if(index == A.length){
 			for(int x : A){
@@ -81,8 +83,8 @@ public class GeneratingAllPermutationsInArray
 	{
 		int A[] = {1,2,3};
 		boolean[] map = new boolean[A.length];
-		Stack<Integer> stack = new Stack<>();
-		printAllPermutations(A, map, stack);		
+		List<Integer> list = new ArrayList<>();
+		printAllPermutations(A, map, list);		
 		// printAllPermutations3(A, 0);		
 		// String input = "RGB";
 	    // printAllPermutations2(input, "");
